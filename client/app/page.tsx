@@ -8,6 +8,9 @@ import PackageCard from "@/components/package-card"
 import TestimonialSlider from "@/components/testimonial-slider"
 import PackageDetailModal from "@/components/package-detail-modal"
 import NewsletterModal from "@/components/newsletter-modal"
+import { BannerCarousel } from "@/components/banner-carouesel"
+import { PackageSection } from "@/components/package-section"
+import { packageSections } from "@/config/package-sections"
 
 export default function Home() {
   const [selectedPackage, setSelectedPackage] = useState<any>(null)
@@ -230,72 +233,36 @@ export default function Home() {
     setIsPackageModalOpen(true)
   }
 
+  // Process packages for each section
+  const sectionPackages = packageSections.map(section => {
+    let filteredPackages = packages.filter(section.filter)
+    if (section.sort) {
+      filteredPackages = filteredPackages.sort(section.sort)
+    }
+    if (section.limit) {
+      filteredPackages = filteredPackages.slice(0, section.limit)
+    }
+    return {
+      ...section,
+      packages: filteredPackages
+    }
+  })
+
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[80vh] w-full">
-        <Image
-          src="/placeholder.svg?height=1080&width=1920"
-          alt="Beautiful travel destination"
-          fill
-          priority
-          className="object-cover"
+      <BannerCarousel />  
+
+      {/* Dynamic Package Sections */}
+      {sectionPackages.map(section => (
+        <PackageSection
+          key={section.id}
+          title={section.title}
+          description={section.description}
+          packages={section.packages}
+          sectionId={section.id}
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
-          <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl max-w-4xl">
-            Discover the World's Most Amazing Places
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg sm:text-xl">
-            Unforgettable experiences and expertly crafted itineraries to the world's most breathtaking destinations
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="text-lg">
-              Explore Packages
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-lg bg-transparent text-white border-white hover:bg-white/10"
-            >
-              Learn More
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Packages Section */}
-      <section className="py-16">
-        <div className="container">
-          <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">Featured Packages</h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-              All-inclusive travel packages designed to provide unforgettable experiences
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {packages.map((pkg) => (
-              <PackageCard
-                key={pkg.id}
-                id={pkg.id}
-                name={pkg.name}
-                image={pkg.image}
-                duration={pkg.duration}
-                description={pkg.description}
-                price={pkg.price}
-                onClick={() => window.location.href = `/packages/${pkg.id}`}
-              />
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <Link href="/packages">
-              <Button size="lg">View All Packages</Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      ))}
 
       {/* Testimonials Section */}
       <section className="py-16 bg-muted">

@@ -8,19 +8,12 @@ import {
   CarouselNext, 
   CarouselPrevious 
 } from "@/components/ui/carousel"
-import { cn } from "@/lib/utils"
+import { Package } from "@/lib/interface"
 
 interface PackageSectionProps {
   title: string
   description: string
-  packages: Array<{
-    id: string
-    name: string
-    image: string
-    duration: string
-    description: string
-    price: number
-  }>
+  packages: Package[]
   sectionId: string
 }
 
@@ -53,16 +46,16 @@ export function PackageSection({ title, description, packages, sectionId }: Pack
           >
             <CarouselContent className="-ml-4">
               {packages.map((pkg) => (
-                <CarouselItem key={pkg.id} className="pl-4 basis-[90%] sm:basis-[60%] md:basis-[40%] lg:basis-[30%] xl:basis-[25%]">
+                <CarouselItem key={pkg._id} className="pl-4 basis-[90%] sm:basis-[60%] md:basis-[40%] lg:basis-[30%] xl:basis-[25%]">
                   <div className="p-1 h-full">
                     <PackageCard
-                      id={pkg.id}
+                      id={pkg._id}
                       name={pkg.name}   
-                      image={pkg.image}
+                      image={pkg.images[0]}
                       duration={pkg.duration}
                       description={pkg.description}
                       price={pkg.price}
-                      onClick={() => window.location.href = `/packages/${pkg.id}`}
+                      onClick={() => window.location.href = `/packages/${pkg._id}`}
                       className="h-full flex flex-col rounded-xl overflow-hidden hover:shadow-lg active:scale-[0.98] transition-all duration-200 bg-white dark:bg-gray-800"  
                       imageClassName="aspect-[4/3] w-full object-cover"
                     />  

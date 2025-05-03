@@ -65,7 +65,7 @@ export default function ContactPage() {
               <div className="grid gap-8 lg:grid-cols-2">
                 <div>
                   <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
-                  <ContactForm className="max-w-md" />
+                  <ContactForm source="Contact Page" className="max-w-md" />
                 </div>
 
                 <div>

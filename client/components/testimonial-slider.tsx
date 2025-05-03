@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ReviewCard from "@/components/review-card"
 import { cn } from "@/lib/utils"
+import { testimonials } from "@/lib/data"
 
 interface Testimonial {
   name: string
@@ -14,13 +15,11 @@ interface Testimonial {
 }
 
 interface TestimonialSliderProps {
-  testimonials: Testimonial[]
   autoPlayInterval?: number
   initialAutoPlay?: boolean
 }
 
 export default function TestimonialSlider({ 
-  testimonials, 
   autoPlayInterval = 5000, 
   initialAutoPlay = true 
 }: TestimonialSliderProps) {

@@ -1,4 +1,4 @@
-const Banner = require('../models/banner.model');
+const Banner = require('../models/Banner');
 
 // Get all active banners
 exports.getActiveBanners = async (req, res) => {

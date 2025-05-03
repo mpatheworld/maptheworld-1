@@ -6,7 +6,7 @@ const enquiryController = require('../controllers/enquiryController');
 router.post('/', enquiryController.createEnquiry);
 router.get('/', enquiryController.getEnquiries);
 router.get('/:id', enquiryController.getEnquiry);
-router.put('/:id/status', enquiryController.updateEnquiryStatus);
+router.put('/:id', enquiryController.updateEnquiry);
 router.delete('/:id', enquiryController.deleteEnquiry);
 
 module.exports = router; 

@@ -12,84 +12,53 @@ import AddPackages from './components/packages/addpackages';
 import Packages from './components/packages/packages';
 import BannerList from './components/banner/BannerList';
 import SectionList from './components/section/SectionList';
+import EnquiryList from './components/enquiry/EnquiryList';
 
 // Protected Route component
-const ProtectedRoute = React.memo(({ children }) => {
+function ProtectedRoute({ children }) {
     const { admin, loading } = useAuth();
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (!admin) {
-        return <Navigate to="/login" />;
-    }
-
+    if (loading) return <div>Loading...</div>;
+    if (!admin) return <Navigate to="/login" />;
     return children;
-});
+}
 
-const App = React.memo(() => {
+const protectedRoutes = [
+    {
+        path: '/dashboard',
+        element: (
+            <Layout>
+                <Dashboard />
+            </Layout>
+        ),
+    },
+    { path: '/packages', element: <Packages /> },
+    { path: '/addpackage', element: <AddPackages /> },
+    { path: '/editpackage/:id', element: <AddPackages /> },
+    { path: '/banners', element: <BannerList /> },
+    { path: '/sections', element: <SectionList /> },
+    { path: '/enquiries', element: <EnquiryList /> },
+];
+
+function App() {
     return (
         <AuthProvider>
             <Router>
                 <Routes>
                     <Route path="/login" element={<Login />} />
-                    <Route
-                        path="/dashboard"
-                        element={
-                            <ProtectedRoute>
-                                <Layout>
-                                    <Dashboard />
-                                </Layout>
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route 
-                        path="/packages" 
-                        element={
-                            <ProtectedRoute>
-                                <Packages />
-                            </ProtectedRoute>
-                        } 
-                    />
-                    <Route 
-                        path="/addpackage" 
-                        element={
-                            <ProtectedRoute>
-                                <AddPackages />
-                            </ProtectedRoute>
-                        } 
-                    />
-                    <Route 
-                        path="/editpackage/:id" 
-                        element={
-                            <ProtectedRoute>
-                                <AddPackages />
-                            </ProtectedRoute>
-                        } 
-                    />
-                    <Route
-                        path="/banners"
-                        element={
-                            <ProtectedRoute>
-                                <BannerList />
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="/sections"
-                        element={
-                            <ProtectedRoute>
-                                <SectionList />
-                            </ProtectedRoute>
-                        }
-                    />
+                    {protectedRoutes.map(({ path, element }) => (
+                        <Route
+                            key={path}
+                            path={path}
+                            element={<ProtectedRoute>{element}</ProtectedRoute>}
+                        />
+                    ))}
                     <Route path="/" element={<Navigate to="/dashboard" />} />
                 </Routes>
-                <ToastContainer />
             </Router>
+            <ToastContainer hideProgressBar/>
         </AuthProvider>
     );
-});
+}
 
 export default App; 

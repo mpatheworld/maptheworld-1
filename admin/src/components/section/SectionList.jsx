@@ -118,7 +118,7 @@ const SectionList = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Title</TableCell>
-                  <TableCell>Identifier</TableCell>
+                  <TableCell>Packages</TableCell>
                   <TableCell>Description</TableCell>
                   <TableCell>Order</TableCell>
                   <TableCell>Status</TableCell>
@@ -129,7 +129,7 @@ const SectionList = () => {
                 {sections.map((section) => (
                   <TableRow key={section._id}>
                     <TableCell>{section.title}</TableCell>
-                    <TableCell>{section.identifier}</TableCell>
+                    <TableCell>{section.packages.length}</TableCell>
                     <TableCell>{section.description}</TableCell>
                     <TableCell>{section.order}</TableCell>
                     <TableCell>

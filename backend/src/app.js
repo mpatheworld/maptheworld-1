@@ -4,7 +4,8 @@ const morgan = require('morgan');
 const packageRoutes = require('./routes/packageRoutes');
 const sectionRoutes = require('./routes/sectionRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-const bannerRoutes = require('./routes/banner.routes');
+const bannerRoutes = require('./routes/bannerRoutes');
+const enquiryRoutes = require('./routes/enquiryRoutes');
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use('/api/packages', packageRoutes);
 app.use('/api/sections', sectionRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/banners', bannerRoutes);
-
+app.use('/api/enquiries', enquiryRoutes);
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);

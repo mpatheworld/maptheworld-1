@@ -1,104 +1,132 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Image from "next/image"
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
-} from "@/components/ui/carousel"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
+import api from "@/lib/api";
 
 interface BannerItem {
-  id: string
-  title: string
-  description: string
-  imageUrl: string
-  ctaLink?: string
-  ctaText?: string
+  _id: string;
+  title: string;
+  description: string;
+  image: {
+    url: string;
+  };
+  link?: string;
 }
-const bannerItems = [
-    {
-      id: "1",
-      title: "Discover Your Next Adventure",
-      description: "Explore the world with our carefully curated travel packages",
-      imageUrl: "/placeholder.svg?height=800&width=1200",
-      ctaLink: "/packages",
-      ctaText: "View Packages"
-    },
-    {
-      id: "2",
-      title: "Luxury Travel Experiences",
-      description: "Indulge in premium accommodations and exclusive tours",
-      imageUrl: "/placeholder.svg?height=800&width=1200",
-      ctaLink: "/contact",
-      ctaText: "Contact Us"
-    },
-    {
-      id: "3",
-      title: "Customized Itineraries",
-      description: "Let us create your perfect travel experience",
-      imageUrl: "/placeholder.svg?height=800&width=1200",
-      ctaLink: "/custom-trip",
-      ctaText: "Plan Your Trip"
-    }
-  ]
 
 interface BannerCarouselProps {
-
-  className?: string
-  autoPlay?: boolean
-  interval?: number
+  className?: string;
+  autoPlay?: boolean;
+  interval?: number;
 }
 
-
 export function BannerCarousel({
- 
   className,
   autoPlay = true,
   interval = 5000,
 }: BannerCarouselProps) {
-  const [api, setApi] = React.useState<any>()
-  const [current, setCurrent] = React.useState(0)
+  const [el, setEl] = React.useState<any>();
+  const [current, setCurrent] = React.useState(0);
+  const [bannerItems, setBannerItems] = React.useState<BannerItem[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
 
+  // Fetch banner data
   React.useEffect(() => {
-    if (!api || !autoPlay) return
+    const fetchBanners = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get("/banners/active");
+        setBannerItems(response.data);
+        setError(null);
+      } catch (err) {
+        console.error("Error fetching banners:", err);
+        setError("Failed to load banners");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBanners();
+  }, []);
+
+  // Auto-play effect
+  React.useEffect(() => {
+    if (!el || !autoPlay || bannerItems.length === 0) return;
 
     const intervalId = setInterval(() => {
-      api.scrollNext()
-    }, interval)
+      el.scrollNext();
+    }, interval);
 
-    return () => clearInterval(intervalId)
-  }, [api, autoPlay, interval])
+    return () => clearInterval(intervalId);
+  }, [el, autoPlay, interval, bannerItems.length]);
 
   const handleSelect = React.useCallback(() => {
-    if (!api) return
-    setCurrent(api.selectedScrollSnap())
-  }, [api])
+    if (!el) return;
+    setCurrent(el.selectedScrollSnap());
+  }, [el]);
 
   React.useEffect(() => {
-    if (!api) return
-    
-    api.on("select", handleSelect)
-    
+    if (!el) return;
+
+    el.on("select", handleSelect);
+
     return () => {
-      api.off("select", handleSelect)
-    }
-  }, [api, handleSelect])
+      el.off("select", handleSelect);
+    };
+  }, [el, handleSelect]);
+
+  if (loading) {
+    return (
+      <div className={cn("w-full h-[90vh] relative", className)}>
+        <Skeleton className="w-full h-full" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div
+        className={cn(
+          "w-full h-[90vh] flex items-center justify-center",
+          className
+        )}
+      >
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
+
+  if (bannerItems.length === 0) {
+    return (
+      <div
+        className={cn(
+          "w-full h-[90vh] flex items-center justify-center",
+          className
+        )}
+      >
+        <p className="text-gray-500">No banners available</p>
+      </div>
+    );
+  }
 
   return (
-    <Carousel 
-      setApi={setApi}
-      className={cn("w-full", className)}
-    >
+    <Carousel setApi={setEl} className={cn("w-full", className)}>
       <CarouselContent>
         {bannerItems.map((item) => (
-          <CarouselItem key={item.id}>
+          <CarouselItem key={item._id}>
             <div className="relative h-[90vh] w-full overflow-hidden">
               <Image
-                src={item.imageUrl}
+                src={item.image.url}
                 alt={item.title}
                 fill
                 priority
@@ -107,14 +135,16 @@ export function BannerCarousel({
               />
               <div className="absolute inset-0 bg-black/40 flex flex-col justify-center px-10 md:px-20">
                 <div className="max-w-2xl text-white">
-                  <h2 className="text-3xl md:text-5xl font-display mb-4">{item.title}</h2>
+                  <h2 className="text-3xl md:text-5xl font-display mb-4">
+                    {item.title}
+                  </h2>
                   <p className="text-lg md:text-xl mb-6">{item.description}</p>
-                  {item.ctaLink && item.ctaText && (
-                    <a 
-                      href={item.ctaLink}
+                  {item.link && (
+                    <a
+                      href={item.link}
                       className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors"
                     >
-                      {item.ctaText}
+                      Explore More
                     </a>
                   )}
                 </div>
@@ -123,11 +153,13 @@ export function BannerCarousel({
           </CarouselItem>
         ))}
       </CarouselContent>
+      <CarouselPrevious className="left-4" />
+      <CarouselNext className="right-4" />
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
         {bannerItems.map((_, index) => (
           <button
             key={index}
-            onClick={() => api?.scrollTo(index)}
+            onClick={() => el?.scrollTo(index)}
             className={cn(
               "w-3 h-3 rounded-full transition-colors",
               current === index ? "bg-primary" : "bg-white/50 hover:bg-white/80"
@@ -136,7 +168,6 @@ export function BannerCarousel({
           />
         ))}
       </div>
-  
     </Carousel>
-  )
+  );
 }

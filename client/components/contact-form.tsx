@@ -1,44 +1,91 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import api from "@/lib/api";
 
 interface ContactFormProps {
-  className?: string
+  className?: string;
+  source: string;
 }
 
-export default function ContactForm({ className }: ContactFormProps) {
+export default function ContactForm({ className, source }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    phone: "",
     message: "",
-  })
+  });
+  const [message, setMessage] = useState({
+    type: "",
+    title: "",
+    description: "",
+  });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Here you would typically send the data to your backend
-    alert("Thank you for your message! We'll get back to you soon.")
-    setFormData({ name: "", email: "", subject: "", message: "" })
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    setMessage({
+      type: "info",
+      title: "Submitting form...",
+      description: "",
+    });
+    e.preventDefault();
+    try {
+      const response = await api.post("/enquiries", {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        path: window?.location?.pathname,
+        source,
+      });
+      console.log("Form submitted:", response);
+      setMessage({
+        type: "success",
+        title: "Thank you for your interest!",
+        description:
+          "Our travel expert will contact you shortly to discuss your dream vacation.",
+      });
+    } catch (error) {
+      setMessage({
+        type: "error",
+        title: "Error submitting form",
+        description: "Please try again later",
+      });
+      console.error("Error submitting form:", error);
+    } finally {
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className={className}>
       <div className="grid gap-4">
         <div className="grid gap-2">
           <Label htmlFor="name">Name</Label>
-          <Input id="name" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} required />
+          <Input
+            id="name"
+            name="name"
+            placeholder="Your name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
@@ -53,12 +100,12 @@ export default function ContactForm({ className }: ContactFormProps) {
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="subject">Subject</Label>
+          <Label htmlFor="phone">Phone Number</Label>
           <Input
-            id="subject"
-            name="subject"
-            placeholder="Subject"
-            value={formData.subject}
+            id="phone"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
             onChange={handleChange}
             required
           />
@@ -75,11 +122,24 @@ export default function ContactForm({ className }: ContactFormProps) {
             required
           />
         </div>
+        <div className="grid gap-2">
+          <p
+            className={`${
+              message?.type === "success"
+                ? "text-green-500"
+                : message?.type === "error"
+                ? "text-red-500"
+                : "text-blue-500"
+            }`}
+          >
+            {message?.title}
+          </p>
+          <p>{message?.description}</p>
+        </div>
         <Button type="submit" className="w-full">
           Send Message
         </Button>
       </div>
     </form>
-  )
+  );
 }
-

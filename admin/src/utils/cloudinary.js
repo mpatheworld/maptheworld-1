@@ -5,22 +5,39 @@ const CLOUDINARY_API_KEY = import.meta.env.VITE_CLOUDINARY_API_KEY;
 const CLOUDINARY_API_SECRET = import.meta.env.VITE_CLOUDINARY_API_SECRET;
 
 export const uploadImageToCloudinary = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-    formData.append('folder', 'banners');
+    try {
+        // Validate file
+        if (!file || !(file instanceof File)) {
+            throw new Error('Invalid file object');
+        }
+
+        if (!file.type.startsWith('image/')) {
+            throw new Error('File must be an image');
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        formData.append('folder', 'banners');
+        formData.append('api_key', CLOUDINARY_API_KEY);
   
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
-      method: 'POST',
-      body: formData,
-    });
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+            method: 'POST',
+            body: formData,
+        });
   
-    if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.message || 'Cloudinary upload failed');
+        if (!res.ok) {
+            const error = await res.json();
+            console.error('Cloudinary upload error:', error);
+            throw new Error(error.message || 'Cloudinary upload failed');
+        }
+
+        const data = await res.json();
+        return { url: data.secure_url, publicId: data.public_id };
+    } catch (error) {
+        console.error('Error uploading to Cloudinary:', error);
+        throw error;
     }
-    const data = await res.json();
-    return { url: data.secure_url, publicId: data.public_id };
 };
 
 // Helper function to generate SHA-1 hash

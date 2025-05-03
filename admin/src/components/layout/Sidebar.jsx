@@ -15,6 +15,7 @@ import {
     Flight as PackageIcon,
     ViewList as SectionIcon,
     Image as ImageIcon,
+    Email as EmailIcon,
 } from '@mui/icons-material';
 
 const drawerWidth = 240;
@@ -39,6 +40,11 @@ const menuItems = [
         text: 'Banners',
         icon: <ImageIcon />,
         path: '/banners'
+    },
+    {
+        text: 'Enquiries',
+        icon: <EmailIcon />,
+        path: '/enquiries'
     }
 ];
 

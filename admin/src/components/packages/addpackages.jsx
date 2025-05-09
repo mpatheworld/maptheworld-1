@@ -52,7 +52,7 @@ const AddPackages = () => {
     price: "",
     location: "",
     state: "Kerala",
-    section: "trending",
+   
     highlights: [],
     facilities: [],
     itinerary: [],
@@ -1000,26 +1000,7 @@ const AddPackages = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth required>
-                  <InputLabel id="section-label">Section</InputLabel>
-                  <Select
-                    labelId="section-label"
-                    id="section"
-                    name="section"
-                    value={packageData.section}
-                    label="Section"
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="trending">Trending</MenuItem>
-                    <MenuItem value="popular">Popular</MenuItem>
-                    <MenuItem value="featured">Featured</MenuItem>
-                    <MenuItem value="new">New Destinations</MenuItem>
-                    <MenuItem value="seasonal">Seasonal</MenuItem>
-                    <MenuItem value="offers">Special Offers</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
+              
 
               <Grid item xs={12}>
                 <FormControlLabel

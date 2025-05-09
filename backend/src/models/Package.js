@@ -76,7 +76,7 @@ const packageSchema = new mongoose.Schema(
     ],
     category: {
       type: String,
-      required: true,
+   
       enum: ["budget-friendly", "trending", "short-trips", "luxury"],
       default: "budget-friendly",
     },

@@ -29,8 +29,11 @@ export interface Package {
     title: string;
     description: string;
   }[];
-  termsAndConditions: string[];
-  cancellationPolicy: string[];
+  termsAndConditions: string;
+  cancellationPolicy: string;
+  bookingPolicy: string;
+  refundPolicy: string;
+  contactInfo: string;
   facilities: string[];
   similarPackages: Package[];
   reviews: Review[];

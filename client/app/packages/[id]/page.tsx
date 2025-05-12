@@ -24,6 +24,12 @@ import { Package } from "@/lib/interface";
 import ContactForm from "@/components/contact-form";
 import { PackageGallery } from "@/components/package-gallery";
 import Modal from "@/components/modal";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 // import { PackageEnquiryForm } from "@/components/package-enquiry-form";
 
 interface PackagePageProps {
@@ -139,10 +145,11 @@ export default function PackagePage({ params }: PackagePageProps) {
                 onValueChange={setActiveTab}
                 className="w-full"
               >
-                <TabsList className="grid w-full grid-cols-4 mb-8">
+                <TabsList className="grid w-full grid-cols-5 mb-8">
                   <TabsTrigger value="overview">Overview</TabsTrigger>
                   <TabsTrigger value="itinerary">Itinerary</TabsTrigger>
                   <TabsTrigger value="inclusions">Inclusions</TabsTrigger>
+                  <TabsTrigger value="policies">Policies</TabsTrigger>
                   <TabsTrigger value="reviews">Reviews</TabsTrigger>
                 </TabsList>
 
@@ -230,6 +237,58 @@ export default function PackagePage({ params }: PackagePageProps) {
                         ))}
                       </ul>
                     </div>
+                  </div>
+                </TabsContent>
+
+                <TabsContent value="policies">
+                  <div className="space-y-6">
+                    <h2 className="text-2xl font-bold mb-4">Package Policies</h2>
+                    <Accordion type="single" collapsible className="w-full">
+                      {packageData?.bookingPolicy && (
+                        <AccordionItem value="booking-policy">
+                          <AccordionTrigger>Booking Policy</AccordionTrigger>
+                          <AccordionContent>
+                            {packageData.bookingPolicy}
+                          </AccordionContent>
+                        </AccordionItem>
+                      )}
+                      
+                      {packageData?.cancellationPolicy && (
+                        <AccordionItem value="cancellation-policy">
+                          <AccordionTrigger>Cancellation Policy</AccordionTrigger>
+                          <AccordionContent>
+                            {packageData.cancellationPolicy}
+                          </AccordionContent>
+                        </AccordionItem>
+                      )}
+                      
+                      {packageData?.refundPolicy && (
+                        <AccordionItem value="refund-policy">
+                          <AccordionTrigger>Refund Policy</AccordionTrigger>
+                          <AccordionContent>
+                            {packageData.refundPolicy}
+                          </AccordionContent>
+                        </AccordionItem>
+                      )}
+                      
+                      {packageData?.termsAndConditions && (
+                        <AccordionItem value="terms-conditions">
+                          <AccordionTrigger>Terms and Conditions</AccordionTrigger>
+                          <AccordionContent>
+                            {packageData.termsAndConditions}
+                          </AccordionContent>
+                        </AccordionItem>
+                      )}
+                      
+                      {packageData?.contactInfo && (
+                        <AccordionItem value="contact-info">
+                          <AccordionTrigger>Contact Information</AccordionTrigger>
+                          <AccordionContent>
+                            {packageData.contactInfo}
+                          </AccordionContent>
+                        </AccordionItem>
+                      )}
+                    </Accordion>
                   </div>
                 </TabsContent>
 

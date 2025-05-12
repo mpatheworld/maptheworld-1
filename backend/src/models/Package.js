@@ -107,6 +107,23 @@ const packageSchema = new mongoose.Schema(
         type: String,
       },
     ],
+    bookingPolicy: {
+      type: String,
+    },
+    cancellationPolicy: {
+      type: String,
+    },
+    refundPolicy: {
+      type: String,
+    },
+    termsAndConditions: {
+      type: String,
+    },
+    contactInfo: {
+      type: String,
+    },
+    
+    
     isActive: {
       type: Boolean,
       default: true,

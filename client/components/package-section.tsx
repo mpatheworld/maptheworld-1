@@ -20,6 +20,45 @@ interface PackageSectionProps {
 export function PackageSection({ title, description, packages, sectionId }: PackageSectionProps) {
   if (packages.length === 0) return null
 
+  // Single package case - display centered without carousel
+  if (packages.length === 1) {
+    return (
+      <section className="py-8 sm:py-16">
+        <div className="container px-4 sm:px-6">
+          <div className="mb-6 sm:mb-10 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold">{title}</h2>
+            <p className="mt-2 sm:mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+              {description}
+            </p>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="w-full max-w-sm">
+              <PackageCard
+                id={packages[0]._id}
+                name={packages[0].name}   
+                image={packages[0].images[0]}
+                duration={packages[0].duration}
+                description={packages[0].description}
+                price={packages[0].price}
+                onClick={() => window.location.href = `/packages/${packages[0]._id}`}
+                className="h-full flex flex-col rounded-xl overflow-hidden hover:shadow-lg active:scale-[0.98] transition-all duration-200 bg-white dark:bg-gray-800"  
+                imageClassName="aspect-[4/3] w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="mt-6 sm:mt-10 text-center">
+            <Link href={`/packages?section=${sectionId}`}>
+              <Button size="sm" className="sm:size-lg">View All {title}</Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Multiple packages case - display carousel
   return (
     <section className="py-8 sm:py-16">
       <div className="container px-4 sm:px-6">
@@ -46,7 +85,7 @@ export function PackageSection({ title, description, packages, sectionId }: Pack
           >
             <CarouselContent className="-ml-4">
               {packages.map((pkg) => (
-                <CarouselItem key={pkg._id} className="pl-4 basis-[90%] sm:basis-[60%] md:basis-[40%] lg:basis-[30%] xl:basis-[25%]">
+                <CarouselItem key={pkg._id} className="pl-4 basis-[70%] sm:basis-[60%] md:basis-[40%] lg:basis-[30%] xl:basis-[25%]">
                   <div className="p-1 h-full">
                     <PackageCard
                       id={pkg._id}

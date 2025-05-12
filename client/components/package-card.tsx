@@ -30,7 +30,7 @@ export default function PackageCard({
 }: PackageCardProps) {
   return (
     <div className={`group overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-sm transition-all active:shadow-md ${className}`}>
-      <div className={`relative w-full h-48 sm:h-56 overflow-hidden ${imageClassName}`}>
+      <div className={`relative w-full ${imageClassName || "aspect-[4/3]"}`}>
         <Image
           src={image || "/placeholder.svg"}
           alt={name}
@@ -40,13 +40,13 @@ export default function PackageCard({
           priority
         />
       </div>
-      <div className="p-3 sm:p-4">
+      <div className="p-3 sm:p-4 flex flex-col flex-grow">
         <h3 className="text-lg sm:text-xl font-bold line-clamp-1">{name}</h3>
         <div className="mt-1 sm:mt-2 flex items-center text-sm sm:text-base text-muted-foreground">
           <Clock className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
           <span className="line-clamp-1">{duration}</span>
         </div>
-        <p className="mt-1 sm:mt-2 text-sm sm:text-base text-muted-foreground line-clamp-2">{description}</p>
+        <p className="mt-1 sm:mt-2 text-sm sm:text-base text-muted-foreground line-clamp-2 flex-grow">{description}</p>
         <div className="mt-3 sm:mt-4 flex items-center justify-between">
           <span className="text-base sm:text-lg font-bold">₹{price}</span>
           {onClick ? (

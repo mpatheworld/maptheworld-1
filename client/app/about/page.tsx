@@ -6,16 +6,16 @@ export default function AboutPage() {
   // Founders data
   const founders = [
     {
-      name: "Sarah Johnson",
+      name: "B.N NITHYANAND ",
       position: "CEO & Founder",
-      image: "/placeholder.svg?height=300&width=300",
-      bio: "With over 15 years in the travel industry, Sarah founded maptheworld with a vision to create authentic travel experiences that connect people with the world's most extraordinary places. Her own transformative journey through Southeast Asia in her twenties sparked a lifelong passion for helping others discover the world's hidden gems.",
+      image: "/nithyanand.jpg",
+      bio: "A visionary leader with a passion for innovation and technology. His journey began with a dream to revolutionize how people explore and experience the world. Through dedication and strategic thinking, he has built maptheworld into a platform that combines cutting-edge technology with personalized travel experiences.",
     },
     {
-      name: "Michael Chen",
-      position: "Co-Founder & Head of Operations",
-      image: "/placeholder.svg?height=300&width=300",
-      bio: "Michael met Sarah during a trek in Nepal, where they discovered their shared dream of creating meaningful travel experiences. With his background in hospitality management, Michael ensures that every maptheworld journey runs smoothly, from the initial planning stages to on-the-ground logistics.",
+      name: "HIMANK GUPTA",
+      position: "CEO & Founder", 
+      image: "/himankgupta.jpg",
+      bio: "An entrepreneur at heart with extensive experience in business development and technology. His expertise in digital transformation and customer experience has been instrumental in shaping maptheworld's mission to make travel planning seamless and accessible for everyone.",
     },
   ]
 
@@ -50,9 +50,9 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="container">
           <div className="grid gap-16 md:grid-cols-2 items-center">
-            <div className="relative h-96 w-full overflow-hidden rounded-2xl shadow-xl">
+            <div className="relative h-[500px] w-full overflow-hidden rounded-2xl shadow-xl">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/android-chrome-512x512.png"
                 alt="Our founders on their first adventure together"
                 fill
                 className="object-cover"
@@ -200,39 +200,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-16">
-        <div className="container">
-          <div className="mx-auto max-w-3xl text-center mb-12">
-            <h2 className="text-3xl font-bold">Our Growing Family</h2>
-            <p className="mt-4 text-muted-foreground">
-              The passionate storytellers who help bring our vision to life
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="group overflow-hidden rounded-xl bg-muted/50 shadow-sm transition-all hover:shadow-md"
-              >
-                <div className="relative h-64 w-full overflow-hidden">
-                  <Image
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold">{member.name}</h3>
-                  <p className="text-primary font-medium">{member.position}</p>
-                  <p className="mt-3 text-muted-foreground">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Values */}
       <section className="py-16 bg-muted">

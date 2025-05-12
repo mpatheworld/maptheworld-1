@@ -124,7 +124,7 @@ export function BannerCarousel({
       <CarouselContent>
         {bannerItems.map((item) => (
           <CarouselItem key={item._id}>
-            <div className="relative h-[90vh] w-full overflow-hidden">
+            <div className="relative h-[93vh] w-full overflow-hidden">
               <Image
                 src={item.image.url}
                 alt={item.title}
@@ -153,8 +153,7 @@ export function BannerCarousel({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-4" />
-      <CarouselNext className="right-4" />
+     
       <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
         {bannerItems.map((_, index) => (
           <button

@@ -15,9 +15,16 @@ interface PackageSectionProps {
   description: string
   packages: Package[]
   sectionId: string
+  onRequestCallback?: (packageId: string) => void
 }
 
-export function PackageSection({ title, description, packages, sectionId }: PackageSectionProps) {
+export function PackageSection({ 
+  title, 
+  description, 
+  packages, 
+  sectionId,
+  onRequestCallback 
+}: PackageSectionProps) {
   if (packages.length === 0) return null
 
   // Single package case - display centered without carousel
@@ -26,8 +33,8 @@ export function PackageSection({ title, description, packages, sectionId }: Pack
       <section className="py-8 sm:py-16">
         <div className="container px-4 sm:px-6">
           <div className="mb-6 sm:mb-10 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold">{title}</h2>
-            <p className="mt-2 sm:mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase">{title}</h2>
+            <p className="mt-2 sm:mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto line-clamp-1">
               {description}
             </p>
           </div>
@@ -42,15 +49,15 @@ export function PackageSection({ title, description, packages, sectionId }: Pack
                 description={packages[0].description}
                 price={packages[0].price}
                 onClick={() => window.location.href = `/packages/${packages[0]._id}`}
-                className="h-full flex flex-col rounded-xl overflow-hidden hover:shadow-lg active:scale-[0.98] transition-all duration-200 bg-white dark:bg-gray-800"  
-                imageClassName="aspect-[4/3] w-full object-cover"
+                onRequestCallback={() => onRequestCallback?.(packages[0]._id)}
+                className="h-full"
               />
             </div>
           </div>
 
           <div className="mt-6 sm:mt-10 text-center">
             <Link href={`/packages?section=${sectionId}`}>
-              <Button size="sm" className="sm:size-lg">View All {title}</Button>
+              <Button size="sm" className="sm:text-lg">View All {title}</Button>
             </Link>
           </div>
         </div>
@@ -63,10 +70,16 @@ export function PackageSection({ title, description, packages, sectionId }: Pack
     <section className="py-8 sm:py-16">
       <div className="container px-4 sm:px-6">
         <div className="mb-6 sm:mb-10 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold">{title}</h2>
-          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold uppercase">{title}</h2>
+          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto line-clamp-1">
             {description}
           </p>
+        </div>
+
+        <div className="mb-6 sm:mb-10 text-right">
+          <Link href={`/packages?section=${sectionId}`}>
+            <Button size="sm" className="sm:text-lg">View All</Button>
+          </Link>
         </div>
 
         <div className="relative -mx-4 sm:mx-0">
@@ -95,9 +108,9 @@ export function PackageSection({ title, description, packages, sectionId }: Pack
                       description={pkg.description}
                       price={pkg.price}
                       onClick={() => window.location.href = `/packages/${pkg._id}`}
-                      className="h-full flex flex-col rounded-xl overflow-hidden hover:shadow-lg active:scale-[0.98] transition-all duration-200 bg-white dark:bg-gray-800"  
-                      imageClassName="aspect-[4/3] w-full object-cover"
-                    />  
+                      onRequestCallback={() => onRequestCallback?.(pkg._id)}
+                      className="h-full"
+                    />
                   </div>
                 </CarouselItem>
               ))}
@@ -105,12 +118,6 @@ export function PackageSection({ title, description, packages, sectionId }: Pack
             <CarouselPrevious className="hidden sm:flex -left-12 bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800" />
             <CarouselNext className="hidden sm:flex -right-12 bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800" />
           </Carousel>
-        </div>
-
-        <div className="mt-6 sm:mt-10 text-center">
-          <Link href={`/packages?section=${sectionId}`}>
-            <Button size="sm" className="sm:size-lg">View All {title}</Button>
-          </Link>
         </div>
       </div>
     </section>

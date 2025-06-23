@@ -15,6 +15,7 @@ import {
   Shield,
   Phone,
   Mail,
+  CheckCircle,
 } from "lucide-react";
 import PackageCard from "@/components/package-card";
 import ReviewCard from "@/components/review-card";
@@ -51,7 +52,7 @@ export default function PackagePage({ params }: PackagePageProps) {
         const response = await api.get(`/packages/${id}`);
         setPackageData(response.data);
         console.log(response.data);
-      } catch (err) {
+      } catch (err) {   
         console.error("Error fetching package:", err);
       }
     };
@@ -69,7 +70,7 @@ export default function PackagePage({ params }: PackagePageProps) {
             alt={packageData?.name || "banner image"}
             fill
             priority
-            className="object-cover"
+            className="object-cover"  
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/40" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
@@ -139,171 +140,169 @@ export default function PackagePage({ params }: PackagePageProps) {
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <Tabs
-                defaultValue="overview"
-                value={activeTab}
-                onValueChange={setActiveTab}
-                className="w-full"
-              >
-                <TabsList className="grid w-full grid-cols-4 mb-8">
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="itinerary">Itinerary</TabsTrigger>
-                  <TabsTrigger value="inclusions">Inclusions</TabsTrigger>
-                  <TabsTrigger value="reviews">Reviews</TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="overview">
-                  <div className="space-y-6">
-                    <div className="prose max-w-none">
-                      <h2 className="text-2xl font-bold mb-4">
-                        Package Overview
-                      </h2>
-                      <p className="text-lg">{packageData?.description}</p>
+              <div className="space-y-8">
+                {/* Package Overview Section */}
+                <section>
+                  <h2 className="text-3xl font-bold mb-6">Package Details</h2>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4">Description</h3>
+                      <p className="text-muted-foreground">{packageData?.description}</p>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="bg-muted p-6 rounded-lg">
-                        <h3 className="text-xl font-bold mb-4">Facilities</h3>
-                        <ul className="space-y-2">
-                          {packageData?.facilities.map((facility, index) => (
-                            <li key={index} className="flex items-center">
-                              <Check className="mr-2 h-5 w-5 text-primary" />
-                              <span>{facility}</span>
-                            </li>
-                          ))}
-                        </ul>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-4">Key Information</h3>
+                      <div className="space-y-3">
+                        <div className="flex items-center">
+                          <MapPin className="mr-2 h-5 w-5 text-primary" />
+                          <span>{packageData?.location}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Clock className="mr-2 h-5 w-5 text-primary" />
+                          <span>{packageData?.duration}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <Users className="mr-2 h-5 w-5 text-primary" />
+                          
+                          {/* <span>Best for {packageData?.category} travelers</span> TODO: Add category */}
+                        </div>
                       </div>
-
-                      <div className="bg-muted p-6 rounded-lg">
-                        <h3 className="text-xl font-bold mb-4">
-                          Trip Highlights
-                        </h3>
-                        <ul className="space-y-2">
-                          {packageData?.highlights.map((highlight, index) => (
-                            <li key={index} className="flex items-center">
-                              <Check className="mr-2 h-5 w-5 text-primary" />
-                              <span>{highlight}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="mb-8">
-                      <PackageGallery images={packageData?.images || []} />
-                    </div>
-                    
-                    <div className="mt-8">
-                      <h2 className="text-2xl font-bold mb-4">Package Policies</h2>
-                      <Accordion type="single" collapsible className="w-full">
-                        {packageData?.bookingPolicy && (
-                          <AccordionItem value="booking-policy">
-                            <AccordionTrigger>Booking Policy</AccordionTrigger>
-                            <AccordionContent>
-                              {packageData.bookingPolicy}
-                            </AccordionContent>
-                          </AccordionItem>
-                        )}
-                        
-                        {packageData?.cancellationPolicy && (
-                          <AccordionItem value="cancellation-policy">
-                            <AccordionTrigger>Cancellation Policy</AccordionTrigger>
-                            <AccordionContent>
-                              {packageData.cancellationPolicy}
-                            </AccordionContent>
-                          </AccordionItem>
-                        )}
-                        
-                        {packageData?.refundPolicy && (
-                          <AccordionItem value="refund-policy">
-                            <AccordionTrigger>Refund Policy</AccordionTrigger>
-                            <AccordionContent>
-                              {packageData.refundPolicy}
-                            </AccordionContent>
-                          </AccordionItem>
-                        )}
-                        
-                        {packageData?.termsAndConditions && (
-                          <AccordionItem value="terms-conditions">
-                            <AccordionTrigger>Terms and Conditions</AccordionTrigger>
-                            <AccordionContent>
-                              {packageData.termsAndConditions}
-                            </AccordionContent>
-                          </AccordionItem>
-                        )}
-                        
-                        {packageData?.contactInfo && (
-                          <AccordionItem value="contact-info">
-                            <AccordionTrigger>Contact Information</AccordionTrigger>
-                            <AccordionContent>
-                              {packageData.contactInfo}
-                            </AccordionContent>
-                          </AccordionItem>
-                        )}
-                      </Accordion>
                     </div>
                   </div>
-                </TabsContent>
+                </section>
 
-                <TabsContent value="itinerary">
-                  <div className="space-y-6">
-                    {packageData?.itinerary.map((day, index) => (
-                      <div key={index} className="bg-muted p-6 rounded-lg">
-                        <div className="flex items-center mb-4">
-                          <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full">
-                            {day?.day}
+                {/* Highlights and Facilities */}
+                <section>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-muted/50 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold mb-4">Trip Highlights</h3>
+                      <ul className="space-y-3">
+                        {packageData?.highlights.map((highlight, index) => (
+                          <li key={index} className="flex items-center">
+                            <CheckCircle className="mr-2 h-5 w-5 text-primary" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="bg-muted/50 p-6 rounded-lg">
+                      <h3 className="text-xl font-semibold mb-4">Facilities</h3>
+                      <ul className="space-y-3">
+                        {packageData?.facilities.map((facility, index) => (
+                          <li key={index} className="flex items-center">
+                            <CheckCircle className="mr-2 h-5 w-5 text-primary" />
+                            <span>{facility}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+
+                {/* Image Gallery */}
+                <section>
+                  <PackageGallery images={packageData?.images || []} />
+                </section>
+
+                {/* Detailed Information Accordion */}
+                <section>
+                  <Accordion type="multiple" className="w-full">
+                    <AccordionItem value="itinerary">
+                      <AccordionTrigger className="text-xl font-semibold">
+                        Detailed Itinerary
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-4">
+                          {packageData?.itinerary.map((day, index) => (
+                            <div key={index} className="border-b pb-4 last:border-b-0">
+                              <div className="flex items-center mb-2">
+                                <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full mr-3">
+                                  Day {day?.day}
+                                </div>
+                                <h4 className="font-medium">{day?.title}</h4>
+                              </div>
+                              <p className="text-muted-foreground">{day?.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+
+                    <AccordionItem value="inclusions">
+                      <AccordionTrigger className="text-xl font-semibold">
+                        Inclusions & Exclusions
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div>
+                            <h4 className="font-semibold mb-4">What's Included</h4>
+                            <ul className="space-y-2">
+                              {packageData?.inclusions.map((item, index) => (
+                                <li key={index} className="flex items-center">
+                                  <Check className="mr-2 h-4 w-4 text-green-500" />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-4">What's Excluded</h4>
+                            <ul className="space-y-2">
+                              {packageData?.exclusions.map((item, index) => (
+                                <li key={index} className="flex items-center">
+                                  <X className="mr-2 h-4 w-4 text-red-500" />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         </div>
-                        <h3 className="text-xl font-bold mb-2">{day?.title}</h3>
-                        <p>{day?.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </TabsContent>
+                      </AccordionContent>
+                    </AccordionItem>
 
-                <TabsContent value="inclusions">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-muted p-6 rounded-lg">
-                      <h3 className="text-xl font-bold mb-4">Inclusions</h3>
-                      <ul className="space-y-2">
-                        {packageData?.inclusions.map((item, index) => (
-                          <li key={index} className="flex items-center">
-                            <Check className="mr-2 h-5 w-5 text-primary" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <AccordionItem value="policies">
+                      <AccordionTrigger className="text-xl font-semibold">
+                        Policies & Important Information
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-4">
+                          {packageData?.bookingPolicy && (
+                            <div>
+                              <h4 className="font-medium mb-2">Booking Policy</h4>
+                              <p className="text-muted-foreground">{packageData.bookingPolicy}</p>
+                            </div>
+                          )}
+                          {packageData?.cancellationPolicy && (
+                            <div>
+                              <h4 className="font-medium mb-2">Cancellation Policy</h4>
+                              <p className="text-muted-foreground">{packageData.cancellationPolicy}</p>
+                            </div>
+                          )}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
 
-                    <div className="bg-muted p-6 rounded-lg">
-                      <h3 className="text-xl font-bold mb-4">Exclusions</h3>
-                      <ul className="space-y-2">
-                        {packageData?.exclusions.map((item, index) => (
-                          <li key={index} className="flex items-center">
-                            <X className="mr-2 h-5 w-5 text-destructive" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="reviews">
-                  <div className="grid gap-6">
-                    {packageData?.reviews.map((review, index) => (
-                      <ReviewCard
-                        key={index}
-                        name={review.name}
-                        image={review.image}
-                        rating={review.rating}
-                        review={review.review}
-                        date={review.date}
-                      />
-                    ))}
-                  </div>
-                </TabsContent>
-              </Tabs>
+                    <AccordionItem value="reviews">
+                      <AccordionTrigger className="text-xl font-semibold">
+                        Traveler Reviews
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-4">
+                          {packageData?.reviews.map((review, index) => (
+                            <ReviewCard
+                              key={index}
+                              name={review.name}
+                              image={review.image}
+                              rating={review.rating}
+                              review={review.review}
+                              date={review.date}
+                            />
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </section>
+              </div>
             </div>
 
             {/* Sidebar with Lead Form */}

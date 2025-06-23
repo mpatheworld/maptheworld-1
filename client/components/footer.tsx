@@ -6,7 +6,9 @@ export default function Footer() {
     <footer className="bg-muted py-12 mt-12">
       <div className="container grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <h3 className="text-lg font-bold mb-4 text-brand-red font-serif">maptheworld</h3>
+          <h3 className="text-lg font-bold mb-4 text-brand-red font-serif">
+            <img src="/logo.svg" alt="Maptheworld Logo" className="h-22 w-auto" />
+          </h3>
           <p className="text-muted-foreground mb-4">
             Discover amazing destinations and create unforgettable memories with our expertly crafted travel packages.
           </p>
@@ -92,7 +94,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center">
               <Phone className="mr-2 h-5 w-5 text-muted-foreground" />
-              <span className="text-muted-foreground">+91 (484) 123-4567</span>
+              <span className="text-muted-foreground">+91 79073 02538</span>
             </li>
             <li className="flex items-center">
               <Mail className="mr-2 h-5 w-5 text-muted-foreground" />

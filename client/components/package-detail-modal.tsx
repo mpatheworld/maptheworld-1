@@ -35,7 +35,9 @@ export default function PackageDetailModal({ isOpen, onClose, packageData }: Pac
       <div className="flex space-x-2 mb-4">
         <button
           className={`px-3 py-1 text-sm rounded-full ${
-            activeTab === "overview" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+            activeTab === "overview" 
+              ? "bg-gradient-to-r from-red-600 to-orange-600 text-white" 
+              : "bg-red-100 text-red-800"
           }`}
           onClick={() => setActiveTab("overview")}
         >
@@ -43,7 +45,9 @@ export default function PackageDetailModal({ isOpen, onClose, packageData }: Pac
         </button>
         <button
           className={`px-3 py-1 text-sm rounded-full ${
-            activeTab === "inclusions" ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+            activeTab === "inclusions"
+              ? "bg-gradient-to-r from-red-600 to-orange-600 text-white"
+              : "bg-red-100 text-red-800"
           }`}
           onClick={() => setActiveTab("inclusions")}
         >
@@ -56,23 +60,23 @@ export default function PackageDetailModal({ isOpen, onClose, packageData }: Pac
           <div>
             <div className="flex items-center gap-4 mb-4">
               <div className="flex items-center">
-                <Clock className="mr-1 h-4 w-4 text-muted-foreground" />
-                <span className="text-sm">{packageData.duration}</span>
+                <Clock className="mr-1 h-4 w-4 text-red-600" />
+                <span className="text-sm text-gray-600">{packageData.duration}</span>
               </div>
               <div className="flex items-center">
-                <MapPin className="mr-1 h-4 w-4 text-muted-foreground" />
-                <span className="text-sm">{packageData.location}</span>
+                <MapPin className="mr-1 h-4 w-4 text-orange-600" />
+                <span className="text-sm text-gray-600">{packageData.location}</span>
               </div>
             </div>
 
-            <p className="text-muted-foreground mb-4">{packageData.description}</p>
+            <p className="text-gray-600 mb-4">{packageData.description}</p>
 
-            <h3 className="font-bold mb-2">Highlights</h3>
+            <h3 className="font-bold mb-2 text-gray-900">Highlights</h3>
             <ul className="space-y-1 mb-4">
               {packageData.highlights.map((highlight, index) => (
                 <li key={index} className="flex items-start">
-                  <Check className="mr-2 h-4 w-4 text-green-500 mt-0.5" />
-                  <span className="text-sm">{highlight}</span>
+                  <Check className="mr-2 h-4 w-4 text-red-600 mt-0.5" />
+                  <span className="text-sm text-gray-600">{highlight}</span>
                 </li>
               ))}
             </ul>
@@ -81,22 +85,22 @@ export default function PackageDetailModal({ isOpen, onClose, packageData }: Pac
 
         {activeTab === "inclusions" && (
           <div>
-            <h3 className="font-bold mb-2">What's Included</h3>
+            <h3 className="font-bold mb-2 text-gray-900">What's Included</h3>
             <ul className="space-y-1 mb-4">
               {packageData.inclusions.map((item, index) => (
                 <li key={index} className="flex items-start">
-                  <Check className="mr-2 h-4 w-4 text-green-500 mt-0.5" />
-                  <span className="text-sm">{item}</span>
+                  <Check className="mr-2 h-4 w-4 text-red-600 mt-0.5" />
+                  <span className="text-sm text-gray-600">{item}</span>
                 </li>
               ))}
             </ul>
 
-            <h3 className="font-bold mb-2">What's Not Included</h3>
+            <h3 className="font-bold mb-2 text-gray-900">What's Not Included</h3>
             <ul className="space-y-1 mb-4">
               {packageData.exclusions.map((item, index) => (
                 <li key={index} className="flex items-start">
-                  <X className="mr-2 h-4 w-4 text-red-500 mt-0.5" />
-                  <span className="text-sm">{item}</span>
+                  <X className="mr-2 h-4 w-4 text-orange-600 mt-0.5" />
+                  <span className="text-sm text-gray-600">{item}</span>
                 </li>
               ))}
             </ul>
@@ -106,12 +110,16 @@ export default function PackageDetailModal({ isOpen, onClose, packageData }: Pac
 
       <div className="mt-4 flex items-center justify-between pt-4 border-t">
         <div>
-          <span className="text-lg font-bold">₹{packageData.price}</span>
-          <span className="text-sm text-muted-foreground"> / person</span>
+          <span className="text-lg font-bold text-gray-900">₹{packageData.price}</span>
+          <span className="text-sm text-gray-600"> / person</span>
         </div>
-        <Button onClick={() => (window.location.href = `/packages/${packageData.id}`)}>Book Now</Button>
+        <Button 
+          onClick={() => (window.location.href = `/packages/${packageData.id}`)}
+          className="bg-gradient-to-r from-red-600 to-orange-600 text-white hover:from-red-700 hover:to-orange-700"
+        >
+          Book Now
+        </Button>
       </div>
     </Modal>
   )
 }
-

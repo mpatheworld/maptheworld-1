@@ -1,184 +1,191 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { MapPin, Heart, Globe, Users, Award, Compass } from "lucide-react"
 
 export default function AboutPage() {
   // Founders data
   const founders = [
     {
-      name: "B.N NITHYANAND ",
+      name: "B.N NITHYANAND",
       position: "CEO & Founder",
       image: "/nithyanand.jpg",
-      bio: "A visionary leader with a passion for innovation and technology. His journey began with a dream to revolutionize how people explore and experience the world. Through dedication and strategic thinking, he has built maptheworld into a platform that combines cutting-edge technology with personalized travel experiences.",
+      bio: "A passionate explorer and visionary leader who believes that travel is the greatest teacher. With over 15 years of experience in the travel industry, he founded MapTheWorld to make authentic travel experiences accessible to everyone.",
     },
     {
       name: "HIMANK GUPTA",
       position: "CEO & Founder", 
       image: "/himankgupta.jpg",
-      bio: "An entrepreneur at heart with extensive experience in business development and technology. His expertise in digital transformation and customer experience has been instrumental in shaping maptheworld's mission to make travel planning seamless and accessible for everyone.",
+      bio: "An adventure enthusiast and tech innovator who combines his love for exploration with cutting-edge technology. His mission is to create seamless travel experiences that connect people with the world's hidden gems.",
     },
   ]
 
-  // Team members data
-  const teamMembers = [
+  const stats = [
+    { number: "10,000+", label: "Happy Travelers", icon: Users },
+    { number: "50+", label: "Destinations", icon: MapPin },
+    { number: "500+", label: "Adventures Created", icon: Compass },
+    { number: "5 Years", label: "Experience", icon: Award },
+  ]
+
+  const values = [
     {
-      name: "Emily Rodriguez",
-      position: "Lead Travel Designer",
-      image: "/placeholder.svg?height=300&width=300",
-      bio: "Emily joined maptheworld after a chance meeting with Sarah in a small café in Bali. She combines her passion for exploration with meticulous attention to detail to craft unique itineraries that showcase the best each destination has to offer.",
+      icon: Heart,
+      title: "Authentic Experiences",
+      description: "We believe in creating genuine connections with local cultures, traditions, and communities that leave lasting memories."
     },
     {
-      name: "David Kim",
-      position: "Customer Experience Manager",
-      image: "/placeholder.svg?height=300&width=300",
-      bio: "David discovered maptheworld as a client first, falling in love with our approach to travel. Now, he's dedicated to ensuring every traveler receives the same personalized service and support that won him over, making each maptheworld experience truly exceptional.",
+      icon: Globe,
+      title: "Sustainable Travel",
+      description: "Our commitment to responsible tourism ensures that every journey positively impacts the destinations we visit."
     },
+    {
+      icon: Users,
+      title: "Personalized Service",
+      description: "Every traveler is unique, and we craft personalized experiences that match your interests, pace, and dreams."
+    },
+    {
+      icon: Compass,
+      title: "Expert Guidance",
+      description: "Our team of travel experts and local guides ensure you discover the hidden gems and authentic stories of each destination."
+    }
   ]
 
   return (
     <>
-      <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-b from-background to-muted">
+      {/* Hero Section */}
+      <section className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-br from-red-50 via-white to-orange-50">
         <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">Our Journey</h1>
-            <p className="mt-6 text-xl text-muted-foreground">The story of maptheworld and the dreamers behind it</p>
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
+              <MapPin className="h-4 w-4" />
+              Discover Our Story
+            </div>
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+              Your Journey Starts Here
+            </h1>
+            <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
+              Born from a passion for exploration and a desire to share the world's wonders, MapTheWorld is your gateway to extraordinary adventures.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
+        <div className="container">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                  <stat.icon className="h-8 w-8 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900">{stat.number}</div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Founder's Story */}
-      <section className="py-16">
+      <section className="py-20 bg-gradient-to-r from-red-50 to-orange-50">
         <div className="container">
-          <div className="grid gap-16 md:grid-cols-2 items-center">
-            <div className="relative h-[500px] w-full overflow-hidden rounded-2xl shadow-xl">
-              <Image
-                src="/android-chrome-512x512.png"
-                alt="Our founders on their first adventure together"
-                fill
-                className="object-cover"
-                priority
-              />
+          <div className="grid gap-16 lg:grid-cols-2 items-center">
+            <div className="relative h-[500px] w-full overflow-hidden rounded-2xl">
+              <iframe
+                src="https://lottie.host/embed/77e1947a-3fbd-40c1-845a-13c5f0f02a90/UCqlPHfg8G.lottie"
+                className="absolute inset-0 w-full h-full"
+                title="Founders Animation"
+                allowFullScreen
+              ></iframe>
             </div>
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold">Where It All Began</h2>
-              <p className="text-lg text-muted-foreground">
-                It started with a chance meeting on a misty mountain trail in Nepal. Sarah, a seasoned traveler seeking 
-                new perspectives, and Michael, a hospitality expert exploring ancient cultures, found themselves sharing 
-                shelter during an unexpected rainstorm.
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                <Heart className="h-4 w-4" />
+                Our Beginning
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                Where Dreams Meet <span className="text-red-600">Adventure</span>
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                MapTheWorld was born from a simple yet powerful belief: everyone deserves to experience the magic of travel. 
+                Our founders, united by their passion for exploration and discovery, set out to create a platform that makes 
+                authentic travel experiences accessible to all.
               </p>
-              <p className="text-lg text-muted-foreground">
-                As they waited out the storm, they discovered a shared frustration: travel experiences that felt 
-                manufactured and disconnected from the authentic heart of destinations. That rainy afternoon in the 
-                Himalayas, the seed of maptheworld was planted.
+              <p className="text-lg text-gray-600 leading-relaxed">
+                From bustling markets in Marrakech to serene temples in Kyoto, from the Northern Lights in Iceland to 
+                the vibrant coral reefs of the Maldives - we've been there, experienced it, and now we're here to share 
+                these incredible journeys with you.
               </p>
-              <p className="text-lg text-muted-foreground">
-                "What if we could create journeys that truly connect people with places?" Sarah had asked. Michael's 
-                eyes lit up. "Not just seeing a place, but feeling it, living it, being transformed by it."
-              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <div className="flex items-center gap-2 text-red-600">
+                  <Globe className="h-5 w-5" />
+                  <span className="font-medium">Global Reach</span>
+                </div>
+                <div className="flex items-center gap-2 text-orange-600">
+                  <Heart className="h-5 w-5" />
+                  <span className="font-medium">Local Heart</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Mission */}
-      <section className="py-16 bg-muted">
+      {/* Values Section */}
+      <section className="py-20 bg-white">
         <div className="container">
-          <div className="mx-auto max-w-3xl text-center mb-12">
-            <h2 className="text-3xl font-bold">Our Mission</h2>
-            <div className="mt-8 space-y-6 text-lg">
-              <p>
-                At maptheworld, we don't just plan trips—we craft stories waiting to be lived. Our mission goes beyond 
-                showing you the world; we aim to help you become part of it, even if just for a moment.
-              </p>
-              <p>
-                We believe travel should leave both the traveler and the destination better than before. Every journey 
-                we design is an opportunity for connection, understanding, and positive impact.
-              </p>
-              <p>
-                When Sarah and Michael returned from Nepal, they carried more than memories—they brought back a vision 
-                for travel that honors local cultures, supports communities, and creates moments of genuine wonder.
-              </p>
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
+              <Compass className="h-4 w-4" />
+              Our Values
             </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              What Drives Our <span className="text-red-600">Passion</span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              These core values guide every journey we create and every experience we deliver
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Company Journey Timeline */}
-      <section className="py-16">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Journey</h2>
-
-          <div className="space-y-12 relative before:absolute before:inset-0 before:left-[50%] before:ml-[-1px] before:border-l-2 before:border-dashed before:border-muted-foreground/30 max-w-3xl mx-auto">
-            <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-4">
-              <div className="text-right pr-4">
-                <h3 className="text-xl font-bold">The First Step</h3>
-                <p className="text-muted-foreground">2010</p>
-                <p className="mt-2">
-                  With savings, passion, and a small office in Sarah's apartment, maptheworld launched with just three 
-                  carefully crafted journeys to places our founders knew intimately.
-                </p>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {values.map((value, index) => (
+              <div
+                key={index}
+                className="group p-8 rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 hover:border-red-200 transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-red-500 to-orange-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
+                  <value.icon className="h-7 w-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{value.description}</p>
               </div>
-              <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold z-10">1</div>
-              <div></div>
-            </div>
-
-            <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-4">
-              <div></div>
-              <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold z-10">2</div>
-              <div className="pl-4">
-                <h3 className="text-xl font-bold">Growing Through Stories</h3>
-                <p className="text-muted-foreground">2015</p>
-                <p className="mt-2">
-                  Word spread through the stories our travelers brought home. Five years in, our small team had grown to 
-                  twelve passionate individuals, and our destinations spanned five continents.
-                </p>
-              </div>
-            </div>
-
-            <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-4">
-              <div className="text-right pr-4">
-                <h3 className="text-xl font-bold">The Challenge</h3>
-                <p className="text-muted-foreground">2020</p>
-                <p className="mt-2">
-                  When global travel paused, we pivoted to virtual experiences and supported our global partners. This 
-                  challenge revealed our resilience and deepened our commitment to responsible tourism.
-                </p>
-              </div>
-              <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold z-10">3</div>
-              <div></div>
-            </div>
-
-            <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-4">
-              <div></div>
-              <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold z-10">4</div>
-              <div className="pl-4">
-                <h3 className="text-xl font-bold">Today's Chapter</h3>
-                <p className="text-muted-foreground">Present</p>
-                <p className="mt-2">
-                  Now, maptheworld connects curious souls with over 50 destinations worldwide. Our approach remains the 
-                  same: authentic experiences, meaningful connections, and journeys that become part of your life story.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Founders Section */}
-      <section className="py-16 bg-muted">
+      <section className="py-20 bg-gradient-to-br from-orange-50 via-white to-red-50">
         <div className="container">
-          <div className="mx-auto max-w-3xl text-center mb-12">
-            <h2 className="text-3xl font-bold">The Dreamers Behind maptheworld</h2>
-            <p className="mt-4 text-muted-foreground">
-              Meet the founders who turned a rainy day conversation into a global travel experience
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-6">
+              <Users className="h-4 w-4" />
+              Meet Our Founders
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              The <span className="text-red-600">Visionaries</span> Behind Your Adventures
+            </h2>
+            <p className="text-lg text-gray-600">
+              Passionate travelers who turned their love for exploration into your next great adventure
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+          <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
             {founders.map((founder, index) => (
               <div
                 key={index}
-                className="group overflow-hidden rounded-xl bg-background shadow-md transition-all hover:shadow-xl"
+                className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-red-200 transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="relative h-80 w-full overflow-hidden">
                   <Image
@@ -187,11 +194,12 @@ export default function AboutPage() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold">{founder.name}</h3>
-                  <p className="text-primary font-medium">{founder.position}</p>
-                  <p className="mt-4 text-muted-foreground leading-relaxed">{founder.bio}</p>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-1">{founder.name}</h3>
+                  <p className="text-red-600 font-semibold mb-4">{founder.position}</p>
+                  <p className="text-gray-600 leading-relaxed">{founder.bio}</p>
                 </div>
               </div>
             ))}
@@ -199,63 +207,111 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
-      
-
-      {/* Values */}
-      <section className="py-16 bg-muted">
+      {/* Journey Timeline */}
+      <section className="py-20 bg-white">
         <div className="container">
-          <div className="mx-auto max-w-3xl text-center mb-12">
-            <h2 className="text-3xl font-bold">The Principles That Guide Our Journey</h2>
-            <p className="mt-4 text-muted-foreground">Values we've carried since that rainy day in Nepal</p>
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
+              <MapPin className="h-4 w-4" />
+              Our Journey
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Milestones of Our <span className="text-red-600">Adventure</span>
+            </h2>
+            <p className="text-lg text-gray-600">
+              From a simple idea to a global travel platform - here's how we've grown
+            </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 max-w-4xl mx-auto">
-            <div className="rounded-xl bg-background p-8 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-bold">Authentic Connection</h3>
-              <p className="mt-4 text-muted-foreground">
-                "Travel is meaningless without connection," Sarah often says. We design every experience to foster 
-                genuine interactions with places, cultures, and people.
-              </p>
-            </div>
-            <div className="rounded-xl bg-background p-8 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-bold">Responsible Impact</h3>
-              <p className="mt-4 text-muted-foreground">
-                Michael's commitment to sustainability shapes our approach. We partner with local communities, minimize 
-                environmental footprints, and ensure tourism benefits those who welcome us.
-              </p>
-            </div>
-            <div className="rounded-xl bg-background p-8 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-bold">Transformative Experiences</h3>
-              <p className="mt-4 text-muted-foreground">
-                We believe travel should change you. Our journeys are designed not just to show you new places, but to 
-                offer new perspectives that stay with you long after you return home.
-              </p>
-            </div>
-            <div className="rounded-xl bg-background p-8 shadow-sm hover:shadow-md transition-shadow">
-              <h3 className="text-xl font-bold">Attention to Detail</h3>
-              <p className="mt-4 text-muted-foreground">
-                From the perfect local guide to the ideal moment to visit a landmark, we obsess over the details so you 
-                can immerse yourself fully in the experience.
-              </p>
-            </div>
+          <div className="space-y-12 relative before:absolute before:inset-0 before:left-[50%] before:ml-[-2px] before:border-l-4 before:border-dashed before:border-red-200 max-w-4xl mx-auto">
+            {[
+              {
+                year: "2021",
+                title: "The Vision",
+                description: "MapTheWorld was founded with a mission to make authentic travel experiences accessible to everyone.",
+                side: "left"
+              },
+              {
+                year: "2022",
+                title: "First Adventures", 
+                description: "Launched our first curated travel packages to popular destinations across India and Southeast Asia.",
+                side: "right"
+              },
+              {
+                year: "2023",
+                title: "Global Expansion",
+                description: "Extended our reach to over 50 destinations worldwide, partnering with local guides and communities.",
+                side: "left"
+              },
+              {
+                year: "2024",
+                title: "Digital Innovation",
+                description: "Introduced AI-powered travel recommendations and seamless booking experiences for modern travelers.",
+                side: "right"
+              },
+              {
+                year: "2025",
+                title: "Sustainable Travel",
+                description: "Launched eco-friendly initiatives and carbon offset programs to promote responsible tourism worldwide.",
+                side: "left"
+              }
+            ].map((milestone, index) => (
+              <div key={index} className={`relative grid grid-cols-[1fr_auto_1fr] items-center gap-8`}>
+                {milestone.side === "left" ? (
+                  <>
+                    <div className="text-right pr-8">
+                      <div className="inline-block px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-bold mb-3">
+                        {milestone.year}
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
+                    </div>
+                    <div className="h-6 w-6 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center z-10">
+                      <div className="h-3 w-3 rounded-full bg-white"></div>
+                    </div>
+                    <div></div>
+                  </>
+                ) : (
+                  <>
+                    <div></div>
+                    <div className="h-6 w-6 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center z-10">
+                      <div className="h-3 w-3 rounded-full bg-white"></div>
+                    </div>
+                    <div className="pl-8">
+                      <div className="inline-block px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-bold mb-3">
+                        {milestone.year}
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600">
         <div className="container">
-          <div className="rounded-xl bg-primary p-12 text-center text-primary-foreground">
-            <h2 className="text-3xl font-bold">Write Your Own Story</h2>
-            <p className="mt-6 max-w-2xl mx-auto text-lg">
-              Every great journey begins with a single step. Join us in creating travel experiences that become chapters 
-              in your life story.
+          <div className="mx-auto max-w-4xl text-center text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to Start Your <span className="text-red-200">Adventure</span>?
+            </h2>
+            <p className="text-xl mb-8 text-red-100 max-w-2xl mx-auto">
+              Join thousands of travelers who have discovered the world through our carefully crafted experiences. 
+              Your next great adventure is just a click away.
             </p>
-            <div className="mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/packages">
-                <Button variant="secondary" size="lg" className="text-lg px-8 py-6">
-                  Explore Our Journeys
+                <Button size="lg" className="bg-white text-red-600 hover:bg-red-50 font-semibold px-8 py-6 text-lg">
+                  Explore Packages
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 font-semibold px-8 py-6 text-lg">
+                  Contact Us
                 </Button>
               </Link>
             </div>

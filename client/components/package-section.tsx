@@ -9,6 +9,7 @@ import {
   CarouselPrevious 
 } from "@/components/ui/carousel"
 import { Package } from "@/lib/interface"
+import { useRouter } from "next/navigation"
 
 interface PackageSectionProps {
   title: string
@@ -25,16 +26,18 @@ export function PackageSection({
   sectionId,
   onRequestCallback 
 }: PackageSectionProps) {
+  const router = useRouter()
+  
   if (packages.length === 0) return null
 
   // Single package case - display centered without carousel
   if (packages.length === 1) {
     return (
-      <section className="py-8 sm:py-16">
+      <section className="py-8 sm:py-16 bg-gradient-to-br from-red-50 via-white to-orange-50">
         <div className="container px-4 sm:px-6">
           <div className="mb-6 sm:mb-10 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold uppercase">{title}</h2>
-            <p className="mt-2 sm:mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto line-clamp-1">
+            <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent uppercase">{title}</h2>
+            <p className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto line-clamp-1">
               {description}
             </p>
           </div>
@@ -48,16 +51,18 @@ export function PackageSection({
                 duration={packages[0].duration}
                 description={packages[0].description}
                 price={packages[0].price}
-                onClick={() => window.location.href = `/packages/${packages[0]._id}`}
+                onClick={() => router.push(`/packages/${packages[0]._id}`)}
                 onRequestCallback={() => onRequestCallback?.(packages[0]._id)}
-                className="h-full"
+                className="h-full hover:-translate-y-1 transition-transform duration-300"
               />
             </div>
           </div>
 
           <div className="mt-6 sm:mt-10 text-center">
             <Link href={`/packages?section=${sectionId}`}>
-              <Button size="sm" className="sm:text-lg">View All {title}</Button>
+              <Button size="sm" className="bg-gradient-to-r from-red-600 to-orange-600 text-white hover:from-red-700 hover:to-orange-700 sm:text-lg">
+                View All {title}
+              </Button>
             </Link>
           </div>
         </div>
@@ -67,18 +72,20 @@ export function PackageSection({
 
   // Multiple packages case - display carousel
   return (
-    <section className="py-8 sm:py-16">
+    <section className="py-8 sm:py-16 bg-gradient-to-br from-red-50 via-white to-orange-50">
       <div className="container px-4 sm:px-6">
         <div className="mb-6 sm:mb-10 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold uppercase">{title}</h2>
-          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto line-clamp-1">
+          <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent uppercase">{title}</h2>
+          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto line-clamp-1">
             {description}
           </p>
         </div>
 
         <div className="mb-6 sm:mb-10 text-right">
           <Link href={`/packages?section=${sectionId}`}>
-            <Button size="sm" className="sm:text-lg">View All</Button>
+            <Button size="sm" className="bg-gradient-to-r from-red-600 to-orange-600 text-white hover:from-red-700 hover:to-orange-700 sm:text-lg">
+              View All
+            </Button>
           </Link>
         </div>
 
@@ -98,7 +105,7 @@ export function PackageSection({
           >
             <CarouselContent className="-ml-4">
               {packages.map((pkg) => (
-                <CarouselItem key={pkg._id} className="pl-4 basis-[70%] sm:basis-[60%] md:basis-[40%] lg:basis-[30%] xl:basis-[25%]">
+                <CarouselItem key={pkg._id} className="pl-4 basis-[70%] sm:basis-[60%] md:basis-[45%] lg:basis-[33.33%]">
                   <div className="p-1 h-full">
                     <PackageCard
                       id={pkg._id}
@@ -107,9 +114,9 @@ export function PackageSection({
                       duration={pkg.duration}
                       description={pkg.description}
                       price={pkg.price}
-                      onClick={() => window.location.href = `/packages/${pkg._id}`}
+                      onClick={() => router.push(`/packages/${pkg._id}`)}
                       onRequestCallback={() => onRequestCallback?.(pkg._id)}
-                      className="h-full"
+                      className="h-full hover:-translate-y-1 transition-transform duration-300"
                     />
                   </div>
                 </CarouselItem>

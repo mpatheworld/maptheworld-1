@@ -97,11 +97,11 @@ export function BannerCarousel({
     return (
       <div
         className={cn(
-          "w-full h-[90vh] flex items-center justify-center",
+          "w-full h-[90vh] flex items-center justify-center bg-gradient-to-br from-red-50 via-white to-orange-50",
           className
         )}
       >
-        <p className="text-red-500">{error}</p>
+        <p className="text-red-600">{error}</p>
       </div>
     );
   }
@@ -110,11 +110,11 @@ export function BannerCarousel({
     return (
       <div
         className={cn(
-          "w-full h-[90vh] flex items-center justify-center",
+          "w-full h-[90vh] flex items-center justify-center bg-gradient-to-br from-red-50 via-white to-orange-50",
           className
         )}
       >
-        <p className="text-gray-500">No banners available</p>
+        <p className="text-gray-600">No banners available</p>
       </div>
     );
   }
@@ -133,16 +133,16 @@ export function BannerCarousel({
                 className="object-cover"
                 unoptimized
               />
-              <div className="absolute inset-0 bg-black/40 flex flex-col justify-center px-10 md:px-20">
-                <div className="max-w-2xl text-white">
-                  <h2 className="text-3xl md:text-5xl font-display mb-4">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/40 flex flex-col justify-center px-10 md:px-20">
+                <div className="max-w-2xl">
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent mb-4">
                     {item.title}
                   </h2>
-                  <p className="text-lg md:text-xl mb-6">{item.description}</p>
+                  <p className="text-lg md:text-xl mb-6 text-white">{item.description}</p>
                   {item.link && (
                     <a
                       href={item.link}
-                      className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors"
+                      className="inline-block bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white px-8 py-3 rounded-md font-semibold text-lg transition-all duration-300"
                     >
                       Explore More
                     </a>
@@ -161,7 +161,9 @@ export function BannerCarousel({
             onClick={() => el?.scrollTo(index)}
             className={cn(
               "w-3 h-3 rounded-full transition-colors",
-              current === index ? "bg-primary" : "bg-white/50 hover:bg-white/80"
+              current === index 
+                ? "bg-gradient-to-r from-red-600 to-orange-600" 
+                : "bg-white/50 hover:bg-white/80"
             )}
             aria-label={`Go to slide ${index + 1}`}
           />

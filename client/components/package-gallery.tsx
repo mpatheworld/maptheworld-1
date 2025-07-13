@@ -26,7 +26,7 @@ export function PackageGallery({ images }: PackageGalleryProps) {
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+      <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
         <Image
           src={images[0] || "/placeholder.svg"}
           alt="Package main image"
@@ -37,12 +37,12 @@ export function PackageGallery({ images }: PackageGalleryProps) {
       </div>
 
       {/* Thumbnail Grid */}
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-4 gap-4">
         {images.map((image, index) => (
           <button
             key={index}
             onClick={() => setSelectedImage(index)}
-            className="relative aspect-square overflow-hidden rounded-lg hover:opacity-90 transition-opacity"
+            className="relative aspect-square overflow-hidden rounded-xl border border-gray-100 hover:border-red-200 hover:-translate-y-1 transition-all duration-300"
           >
             <Image
               src={image}
@@ -56,8 +56,10 @@ export function PackageGallery({ images }: PackageGalleryProps) {
 
       {/* Lightbox */}
       <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl p-0">
-          <DialogTitle className="pt-2 pl-2">Image Preview</DialogTitle>
+        <DialogContent className="max-w-5xl p-0 bg-gradient-to-br from-red-50 via-white to-orange-50">
+          <DialogTitle className="p-4 text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+            Image Preview
+          </DialogTitle>
           <div className="relative aspect-video">
             {selectedImage !== null && (
               <Image
@@ -73,7 +75,7 @@ export function PackageGallery({ images }: PackageGalleryProps) {
               variant="ghost"
               size="icon"
               onClick={handlePrevious}
-              className="rounded-full"
+              className="rounded-full bg-white/80 hover:bg-white hover:text-red-600 transition-colors"
             >
               <ChevronLeft className="h-6 w-6" />
             </Button>
@@ -83,7 +85,7 @@ export function PackageGallery({ images }: PackageGalleryProps) {
               variant="ghost"
               size="icon"
               onClick={handleNext}
-              className="rounded-full"
+              className="rounded-full bg-white/80 hover:bg-white hover:text-red-600 transition-colors"
             >
               <ChevronRight className="h-6 w-6" />
             </Button>
@@ -92,4 +94,4 @@ export function PackageGallery({ images }: PackageGalleryProps) {
       </Dialog>
     </div>
   );
-} 
+}

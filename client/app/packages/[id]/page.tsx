@@ -31,7 +31,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-// import { PackageEnquiryForm } from "@/components/package-enquiry-form";
 
 interface PackagePageProps {
   params: Promise<{
@@ -75,24 +74,28 @@ export default function PackagePage({ params }: PackagePageProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/40" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
             <div className="max-w-4xl">
-              <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl mb-6">
-                {packageData?.name}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-red-100 text-red-800 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+                <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
+                {packageData?.location?.toUpperCase()}
+              </div>
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent mb-4 sm:mb-6">
+                {packageData?.name.toUpperCase()}
               </h1>
-              <div className="flex items-center justify-center gap-6 text-lg mb-8">
+              <div className="flex items-center justify-center gap-4 sm:gap-6 text-sm sm:text-lg mb-6 sm:mb-8">
                 <div className="flex items-center">
-                  <Clock className="mr-2 h-5 w-5" />
+                  <Clock className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   <span>{packageData?.duration}</span>
                 </div>
                 <div className="flex items-center">
-                  <MapPin className="mr-2 h-5 w-5" />
+                  <MapPin className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   <span>{packageData?.location}</span>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Button
                   onClick={() => setIsModalOpen(true)}
                   size="lg"
-                  className="bg-primary hover:bg-primary/90"
+                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-semibold px-6 py-4 sm:px-8 sm:py-6 text-sm sm:text-lg"
                 >
                   Book Your Dream Vacation
                 </Button>
@@ -100,7 +103,7 @@ export default function PackagePage({ params }: PackagePageProps) {
                   onClick={() => setIsModalOpen(true)}
                   size="lg"
                   variant="outline"
-                  className="bg-white/10 hover:bg-white/20"
+                  className="border-white text-white hover:bg-white hover:text-red-600 font-semibold px-6 py-4 sm:px-8 sm:py-6 text-sm sm:text-lg"
                 >
                   Get a Free Quote
                 </Button>
@@ -111,23 +114,23 @@ export default function PackagePage({ params }: PackagePageProps) {
       </section>
 
       {/* Quick Info Bar */}
-      <section className="bg-primary text-primary-foreground py-4">
+      <section className="bg-gradient-to-r from-red-600 to-orange-600 text-white py-3 sm:py-4">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="flex items-center justify-center">
-              <Star className="mr-2 h-5 w-5" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+            <div className="flex items-center justify-center text-sm sm:text-base">
+              <Star className="mr-1.5 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               <span>4.9/5 Rating</span>
             </div>
-            <div className="flex items-center justify-center">
-              <Users className="mr-2 h-5 w-5" />
+            <div className="flex items-center justify-center text-sm sm:text-base">
+              <Users className="mr-1.5 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               <span>1000+ Happy Travelers</span>
             </div>
-            <div className="flex items-center justify-center">
-              <Shield className="mr-2 h-5 w-5" />
+            <div className="flex items-center justify-center text-sm sm:text-base">
+              <Shield className="mr-1.5 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               <span>Best Price Guarantee</span>
             </div>
-            <div className="flex items-center justify-center">
-              <Calendar className="mr-2 h-5 w-5" />
+            <div className="flex items-center justify-center text-sm sm:text-base">
+              <Calendar className="mr-1.5 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
               <span>Flexible Booking</span>
             </div>
           </div>
@@ -135,35 +138,30 @@ export default function PackagePage({ params }: PackagePageProps) {
       </section>
 
       {/* Main Content */}
-      <section className="py-12">
+      <section className="py-8 sm:py-12">
         <div className="container">
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-6 lg:gap-8 lg:grid-cols-3">
             {/* Main Content */}
             <div className="lg:col-span-2">
-              <div className="space-y-8">
+              <div className="space-y-6 sm:space-y-8">
                 {/* Package Overview Section */}
                 <section>
-                  <h2 className="text-3xl font-bold mb-6">Package Details</h2>
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Package Details</h2>
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">Description</h3>
-                      <p className="text-muted-foreground">{packageData?.description}</p>
+                      <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Description</h3>
+                      <p className="text-sm sm:text-base text-gray-600">{packageData?.description}</p>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">Key Information</h3>
-                      <div className="space-y-3">
+                      <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Key Information</h3>
+                      <div className="space-y-2 sm:space-y-3">
                         <div className="flex items-center">
-                          <MapPin className="mr-2 h-5 w-5 text-primary" />
-                          <span>{packageData?.location}</span>
+                          <MapPin className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-red-600" />
+                          <span className="text-sm sm:text-base">{packageData?.location}</span>
                         </div>
                         <div className="flex items-center">
-                          <Clock className="mr-2 h-5 w-5 text-primary" />
-                          <span>{packageData?.duration}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <Users className="mr-2 h-5 w-5 text-primary" />
-                          
-                          {/* <span>Best for {packageData?.category} travelers</span> TODO: Add category */}
+                          <Clock className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-red-600" />
+                          <span className="text-sm sm:text-base">{packageData?.duration}</span>
                         </div>
                       </div>
                     </div>
@@ -172,24 +170,24 @@ export default function PackagePage({ params }: PackagePageProps) {
 
                 {/* Highlights and Facilities */}
                 <section>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-muted/50 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold mb-4">Trip Highlights</h3>
-                      <ul className="space-y-3">
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="bg-gradient-to-br from-red-50 via-white to-orange-50 p-4 sm:p-6 rounded-lg">
+                      <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Trip Highlights</h3>
+                      <ul className="space-y-2 sm:space-y-3">
                         {packageData?.highlights.map((highlight, index) => (
-                          <li key={index} className="flex items-center">
-                            <CheckCircle className="mr-2 h-5 w-5 text-primary" />
+                          <li key={index} className="flex items-center text-sm sm:text-base">
+                            <CheckCircle className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-red-600" />
                             <span>{highlight}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    <div className="bg-muted/50 p-6 rounded-lg">
-                      <h3 className="text-xl font-semibold mb-4">Facilities</h3>
-                      <ul className="space-y-3">
+                    <div className="bg-gradient-to-br from-red-50 via-white to-orange-50 p-4 sm:p-6 rounded-lg">
+                      <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Facilities</h3>
+                      <ul className="space-y-2 sm:space-y-3">
                         {packageData?.facilities.map((facility, index) => (
-                          <li key={index} className="flex items-center">
-                            <CheckCircle className="mr-2 h-5 w-5 text-primary" />
+                          <li key={index} className="flex items-center text-sm sm:text-base">
+                            <CheckCircle className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-red-600" />
                             <span>{facility}</span>
                           </li>
                         ))}
@@ -207,20 +205,20 @@ export default function PackagePage({ params }: PackagePageProps) {
                 <section>
                   <Accordion type="multiple" className="w-full">
                     <AccordionItem value="itinerary">
-                      <AccordionTrigger className="text-xl font-semibold">
+                      <AccordionTrigger className="text-lg sm:text-xl font-semibold">
                         Detailed Itinerary
                       </AccordionTrigger>
                       <AccordionContent>
-                        <div className="space-y-4">
+                        <div className="space-y-3 sm:space-y-4">
                           {packageData?.itinerary.map((day, index) => (
-                            <div key={index} className="border-b pb-4 last:border-b-0">
+                            <div key={index} className="border-b pb-3 sm:pb-4 last:border-b-0">
                               <div className="flex items-center mb-2">
-                                <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full mr-3">
-                                  Day {day?.day}
+                                <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full mr-2 sm:mr-3 text-sm">
+                                  {day?.day}
                                 </div>
-                                <h4 className="font-medium">{day?.title}</h4>
+                                <h4 className="font-medium text-sm sm:text-base">{day?.title}</h4>
                               </div>
-                              <p className="text-muted-foreground">{day?.description}</p>
+                              <p className="text-sm sm:text-base text-gray-600">{day?.description}</p>
                             </div>
                           ))}
                         </div>
@@ -228,28 +226,28 @@ export default function PackagePage({ params }: PackagePageProps) {
                     </AccordionItem>
 
                     <AccordionItem value="inclusions">
-                      <AccordionTrigger className="text-xl font-semibold">
+                      <AccordionTrigger className="text-lg sm:text-xl font-semibold">
                         Inclusions & Exclusions
                       </AccordionTrigger>
                       <AccordionContent>
-                        <div className="grid md:grid-cols-2 gap-6">
+                        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
                           <div>
-                            <h4 className="font-semibold mb-4">What's Included</h4>
-                            <ul className="space-y-2">
+                            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">What's Included</h4>
+                            <ul className="space-y-1.5 sm:space-y-2">
                               {packageData?.inclusions.map((item, index) => (
-                                <li key={index} className="flex items-center">
-                                  <Check className="mr-2 h-4 w-4 text-green-500" />
+                                <li key={index} className="flex items-center text-sm sm:text-base">
+                                  <Check className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-green-500" />
                                   {item}
                                 </li>
                               ))}
                             </ul>
                           </div>
                           <div>
-                            <h4 className="font-semibold mb-4">What's Excluded</h4>
-                            <ul className="space-y-2">
+                            <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">What's Excluded</h4>
+                            <ul className="space-y-1.5 sm:space-y-2">
                               {packageData?.exclusions.map((item, index) => (
-                                <li key={index} className="flex items-center">
-                                  <X className="mr-2 h-4 w-4 text-red-500" />
+                                <li key={index} className="flex items-center text-sm sm:text-base">
+                                  <X className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
                                   {item}
                                 </li>
                               ))}
@@ -260,21 +258,21 @@ export default function PackagePage({ params }: PackagePageProps) {
                     </AccordionItem>
 
                     <AccordionItem value="policies">
-                      <AccordionTrigger className="text-xl font-semibold">
+                      <AccordionTrigger className="text-lg sm:text-xl font-semibold">
                         Policies & Important Information
                       </AccordionTrigger>
                       <AccordionContent>
-                        <div className="space-y-4">
+                        <div className="space-y-3 sm:space-y-4">
                           {packageData?.bookingPolicy && (
                             <div>
-                              <h4 className="font-medium mb-2">Booking Policy</h4>
-                              <p className="text-muted-foreground">{packageData.bookingPolicy}</p>
+                              <h4 className="font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Booking Policy</h4>
+                              <p className="text-sm sm:text-base text-gray-600">{packageData.bookingPolicy}</p>
                             </div>
                           )}
                           {packageData?.cancellationPolicy && (
                             <div>
-                              <h4 className="font-medium mb-2">Cancellation Policy</h4>
-                              <p className="text-muted-foreground">{packageData.cancellationPolicy}</p>
+                              <h4 className="font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Cancellation Policy</h4>
+                              <p className="text-sm sm:text-base text-gray-600">{packageData.cancellationPolicy}</p>
                             </div>
                           )}
                         </div>
@@ -282,11 +280,11 @@ export default function PackagePage({ params }: PackagePageProps) {
                     </AccordionItem>
 
                     <AccordionItem value="reviews">
-                      <AccordionTrigger className="text-xl font-semibold">
+                      <AccordionTrigger className="text-lg sm:text-xl font-semibold">
                         Traveler Reviews
                       </AccordionTrigger>
                       <AccordionContent>
-                        <div className="space-y-4">
+                        <div className="space-y-3 sm:space-y-4">
                           {packageData?.reviews.map((review, index) => (
                             <ReviewCard
                               key={index}
@@ -308,11 +306,11 @@ export default function PackagePage({ params }: PackagePageProps) {
             {/* Sidebar with Lead Form */}
             <div className="lg:col-span-1">
               <div className="sticky top-24">
-                <div className="bg-muted rounded-lg p-6 mb-6">
-                  <p>{packageData?.name}</p>
-                  <div className="flex items-end gap-2 mb-6">
-                    <p className="text-3xl font-bold">₹{packageData?.price}</p>
-                    <p className="text-muted-foreground">/ per person</p>
+                <div className="bg-gradient-to-br from-red-50 via-white to-orange-50 rounded-lg p-4 sm:p-6 mb-4 sm:mb-6">
+                  <p className="text-sm sm:text-base">{packageData?.name}</p>
+                  <div className="flex items-end gap-2 mb-4 sm:mb-6">
+                    <p className="text-2xl sm:text-3xl font-bold text-red-600">₹{packageData?.price}</p>
+                    <p className="text-sm sm:text-base text-gray-600">/ per person</p>
                   </div>
 
                   {!isFormSubmitted ? (
@@ -321,14 +319,14 @@ export default function PackagePage({ params }: PackagePageProps) {
                     />
                   ) : (
                     <div className="text-center">
-                      <h3 className="text-xl font-bold mb-2">Thank You!</h3>
-                      <p className="text-muted-foreground mb-4">
+                      <h3 className="text-lg sm:text-xl font-bold mb-2">Thank You!</h3>
+                      <p className="text-sm sm:text-base text-gray-600 mb-4">
                         Our travel expert will contact you shortly to discuss
                         your dream vacation.
                       </p>
                       <Button
                         variant="outline"
-                        className="w-full"
+                        className="w-full border-red-600 text-red-600 hover:bg-red-600 hover:text-white text-sm sm:text-base"
                         onClick={() => setIsFormSubmitted(false)}
                       >
                         Submit Another Enquiry
@@ -337,16 +335,16 @@ export default function PackagePage({ params }: PackagePageProps) {
                   )}
                 </div>
 
-                <div className="bg-muted rounded-lg p-6">
-                  <h3 className="text-xl font-bold mb-4">Need Help?</h3>
-                  <div className="space-y-4">
+                <div className="bg-gradient-to-br from-red-50 via-white to-orange-50 rounded-lg p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Need Help?</h3>
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="flex items-center">
-                      <Phone className="mr-2 h-5 w-5 text-primary" />
-                      <span>+91-9876543210</span>
+                      <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-red-600" />
+                      <span className="text-sm sm:text-base">+91-9876543210</span>
                     </div>
                     <div className="flex items-center">
-                      <Mail className="mr-2 h-5 w-5 text-primary" />
-                      <span>support@maptheworld.com</span>
+                      <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5 text-red-600" />
+                      <span className="text-sm sm:text-base">support@maptheworld.com</span>
                     </div>
                   </div>
                 </div>
@@ -359,10 +357,10 @@ export default function PackagePage({ params }: PackagePageProps) {
       {/* Similar Packages */}
       {packageData?.similarPackages &&
         packageData?.similarPackages?.length > 0 && (
-          <section className="py-12 bg-muted">
+          <section className="py-8 sm:py-12 bg-gradient-to-br from-red-50 via-white to-orange-50">
             <div className="container">
-              <h2 className="text-3xl font-bold mb-8">Similar Packages</h2>
-              <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Similar Packages</h2>
+              <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {packageData?.similarPackages.map((pkg) => (
                   <PackageCard
                     key={pkg?._id}

@@ -8,6 +8,7 @@ import { BannerCarousel } from "@/components/banner-carouesel";
 import { PackageSection } from "@/components/package-section";
 import api from "@/lib/api";
 import { Section } from "@/lib/interface";
+import { MapPin, Heart } from "lucide-react";
 
 export default function Home() {
   const [sections, setSections] = useState<Section[]>([]);
@@ -42,13 +43,17 @@ export default function Home() {
       ))}
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-muted">
+      <section className="py-20 bg-gradient-to-br from-red-50 via-white to-orange-50">
         <div className="container">
-          <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold sm:text-4xl">
-              What Our Customers Say
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
+              <Heart className="h-4 w-4" />
+              Traveler Stories
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              What Our <span className="text-red-600">Customers</span> Say
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600">
               Read testimonials from travelers who have experienced our services
             </p>
           </div>
@@ -60,19 +65,18 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600">
         <div className="container">
-          <div className="rounded-lg bg-primary p-8 text-center text-primary-foreground md:p-12">
-            <h2 className="text-3xl font-bold sm:text-4xl">
-              Ready for Your Next Adventure?
+          <div className="mx-auto max-w-4xl text-center text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready for Your Next <span className="text-red-200">Adventure</span>?
             </h2>
-            <p className="mt-4 text-lg max-w-2xl mx-auto">
-              Contact our travel experts today to start planning your dream
-              vacation
+            <p className="text-xl mb-8 text-red-100 max-w-2xl mx-auto">
+              Contact our travel experts today to start planning your dream vacation
             </p>
-            <div className="mt-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button size="lg" variant="secondary">
+                <Button size="lg" className="bg-white text-red-600 hover:bg-red-50 font-semibold px-8 py-6 text-lg">
                   Contact Us
                 </Button>
               </Link>

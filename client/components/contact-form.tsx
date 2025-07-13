@@ -77,7 +77,7 @@ export default function ContactForm({ className, source }: ContactFormProps) {
     <form onSubmit={handleSubmit} className={className}>
       <div className="grid gap-4">
         <div className="grid gap-2">
-          <Label htmlFor="name">Name</Label>
+          <Label htmlFor="name" className="text-gray-900">Name</Label>
           <Input
             id="name"
             name="name"
@@ -85,10 +85,11 @@ export default function ContactForm({ className, source }: ContactFormProps) {
             value={formData.name}
             onChange={handleChange}
             required
+            className="border-gray-200 focus:border-red-500 focus:ring-red-500"
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email" className="text-gray-900">Email</Label>
           <Input
             id="email"
             name="email"
@@ -97,10 +98,11 @@ export default function ContactForm({ className, source }: ContactFormProps) {
             value={formData.email}
             onChange={handleChange}
             required
+            className="border-gray-200 focus:border-red-500 focus:ring-red-500"
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="phone">Phone Number</Label>
+          <Label htmlFor="phone" className="text-gray-900">Phone Number</Label>
           <Input
             id="phone"
             name="phone"
@@ -108,10 +110,11 @@ export default function ContactForm({ className, source }: ContactFormProps) {
             value={formData.phone}
             onChange={handleChange}
             required
+            className="border-gray-200 focus:border-red-500 focus:ring-red-500"
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="message">Message</Label>
+          <Label htmlFor="message" className="text-gray-900">Message</Label>
           <Textarea
             id="message"
             name="message"
@@ -120,6 +123,7 @@ export default function ContactForm({ className, source }: ContactFormProps) {
             onChange={handleChange}
             rows={5}
             required
+            className="border-gray-200 focus:border-red-500 focus:ring-red-500"
           />
         </div>
         <div className="grid gap-2">
@@ -129,14 +133,17 @@ export default function ContactForm({ className, source }: ContactFormProps) {
                 ? "text-green-500"
                 : message?.type === "error"
                 ? "text-red-500"
-                : "text-blue-500"
-            }`}
+                : "text-orange-500"
+            } font-medium`}
           >
             {message?.title}
           </p>
-          <p>{message?.description}</p>
+          <p className="text-gray-600">{message?.description}</p>
         </div>
-        <Button type="submit" className="w-full">
+        <Button 
+          type="submit" 
+          className="w-full bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-semibold"
+        >
           Send Message
         </Button>
       </div>

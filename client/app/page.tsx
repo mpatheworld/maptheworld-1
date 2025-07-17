@@ -9,6 +9,45 @@ import { PackageSection } from "@/components/package-section";
 import api from "@/lib/api";
 import { Section } from "@/lib/interface";
 import { MapPin, Heart } from "lucide-react";
+import { OfferBanner } from "@/components/offer-banner"
+import React from 'react'
+
+// Add offers data
+const offers = [
+  {
+    title: "Early Bird Summer Special",
+    description: "Book your summer vacation now and get amazing discounts on selected packages",
+    discount: "15%",
+    ctaText: "Book Now",
+    ctaLink: "/packages",
+    variant: "red" as const
+  },
+  {
+    title: "Last Minute Deals",
+    description: "Grab incredible discounts on last-minute bookings for selected destinations",
+    discount: "20%",
+    ctaText: "View Deals",
+    ctaLink: "/packages",
+    variant: "orange" as const
+  },
+  {
+    title: "Group Travel Offer",
+    description: "Special rates for group bookings of 5 or more people. Perfect for family and friends",
+    discount: "25%",
+    ctaText: "Plan Together",
+    ctaLink: "/contact",
+    variant: "red" as const
+  },
+  {
+    title: "Early Bird Summer Special",
+    description: "Book your summer vacation now and get amazing discounts on selected packages",
+    discount: "15%",
+    ctaText: "Book Now",
+    ctaLink: "/packages",
+    variant: "red" as const
+  }
+    
+]
 
 export default function Home() {
   const [sections, setSections] = useState<Section[]>([]);
@@ -31,15 +70,19 @@ export default function Home() {
       {/* Hero Section */}
       <BannerCarousel />
 
-      {/* Dynamic Package Sections */}
-      {sections.map((section) => (
-        <PackageSection
-          key={section._id}
-          title={section.title}
-          description={section.description}
-          packages={section.packages}
-          sectionId={section._id}
-        />
+      {/* Dynamic Package Sections with Offer Banners */}
+      {sections.map((section, index) => (
+        <React.Fragment key={section._id}>
+          <PackageSection
+            title={section.title}
+            description={section.description}
+            packages={section.packages}
+            sectionId={section._id}
+          />
+          {index < sections.length - 1 && index < offers.length && (
+            <OfferBanner {...offers[index]} />
+          )}
+        </React.Fragment>
       ))}
 
       {/* Testimonials Section */}

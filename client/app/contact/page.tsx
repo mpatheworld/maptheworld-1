@@ -6,6 +6,7 @@ import { MapPin, Phone, Mail, Clock, Users, Heart, Globe, Compass } from "lucide
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import TestimonialSlider from "@/components/testimonial-slider"
 
 export default function ContactPage() {
   const [activeTab, setActiveTab] = useState("contact")
@@ -15,14 +16,14 @@ export default function ContactPage() {
       id: "kochi",
       name: "Kochi",
       address: "42 Tourism Avenue, Kochi, Kerala, India 682016",
-      phone: "+91 (484) 123-4567", 
-      email: "kochi@maptheworld.com",
+      phone: "+91 (484) 123-4567",
+      email: "kochi@maptheworld.com", 
       hours: "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed",
       mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15721.000000000002!2d76.2678!3d9.9312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514abec6bf%3A0xbd582caa5844192!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1619826381244!5m2!1sen!2sin",
     },
     {
-      id: "kannur", 
-      name: "Kannur",
+      id: "kannur",
+      name: "Kannur", 
       address: "15 Beach Road, Kannur, Kerala, India 670001",
       phone: "+91 (497) 234-5678",
       email: "kannur@maptheworld.com",
@@ -31,286 +32,190 @@ export default function ContactPage() {
     },
     {
       id: "trivandrum",
-      name: "Trivandrum", 
-      address: "28 Temple Street, Trivandrum, Kerala, India 695001",
+      name: "Trivandrum",
+      address: "28 Temple Street, Trivandrum, Kerala, India 695001", 
       phone: "+91 (471) 345-6789",
       email: "trivandrum@maptheworld.com",
       hours: "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed",
       mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15765.000000000002!2d76.9366!3d8.5241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb805bbcd47%3A0x15439fab5c5c81cb!2sThiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1619826520279!5m2!1sen!2sin",
-    },
+    }
   ]
 
   const [selectedOffice, setSelectedOffice] = useState(offices[0])
 
   return (
     <>
-      <section className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-br from-red-50 via-white to-orange-50">
-        <div className="container">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
-              <MapPin className="h-4 w-4" />
-              Get in Touch
+      {/* Hero Section */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-50/90 via-white/50 to-orange-50/90 backdrop-blur-sm" />
+        <div className="container relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
+                <MapPin className="h-4 w-4" />
+                Let's Connect
+              </div>
+              <h1 className="text-5xl font-bold tracking-tight lg:text-6xl xl:text-7xl bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent mb-6">
+                Your Journey Begins Here
+              </h1>
+              <p className="text-xl text-gray-600 mb-8">
+                Ready to embark on your next adventure? Our travel experts are here to turn your dream destinations into unforgettable experiences.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="#contact-form">
+                  <Button size="lg" className="bg-gradient-to-r from-red-600 to-orange-600 text-white hover:opacity-90">
+                    Start Planning
+                  </Button>
+                </Link>
+                <Link href="/packages">
+                  <Button size="lg" variant="outline" className="border-red-600 text-red-600 hover:bg-red-50">
+                    View Packages
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-              Contact Us
-            </h1>
-            <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
-              Have questions or ready to plan your next adventure? Our travel experts are here to help make your dreams a reality.
-            </p>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-orange-600/10 rounded-3xl transform rotate-3" />
+              <div className="relative bg-white p-8 rounded-3xl shadow-xl">
+                <ContactForm source="Contact Hero" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      {/* Office Locations */}
+      <section className="py-24 bg-white">
         <div className="container">
-          <Tabs defaultValue="contact" onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-12">
-              <TabsTrigger value="contact" className="text-lg">Contact Form</TabsTrigger>
-              <TabsTrigger value="offices" className="text-lg">Our Offices</TabsTrigger>
-            </TabsList>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-6">
+              <Globe className="h-4 w-4" />
+              Our Locations
+            </div>
+            <h2 className="text-4xl font-bold mb-4">Find Us Near You</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              With offices across Kerala, we're always close by to help plan your perfect trip
+            </p>
+          </div>
 
-            <TabsContent value="contact">
-              <div className="grid gap-12 lg:grid-cols-2">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-6">
-                    <Mail className="h-4 w-4" />
-                    Send us a Message
-                  </div>
-                  <h2 className="text-3xl font-bold mb-6 text-gray-900">Get in Touch</h2>
-                  <ContactForm source="Contact Page" className="max-w-md" />
-                </div>
-
-                <div>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
-                    <MapPin className="h-4 w-4" />
-                    Contact Information
-                  </div>
-                  <h2 className="text-3xl font-bold mb-8 text-gray-900">How to Reach Us</h2>
-                  <div className="space-y-8">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {offices.map((office) => (
+              <div
+                key={office.id}
+                className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 p-8 hover:border-red-200 transition-all duration-300"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative">
+                  <h3 className="text-2xl font-bold mb-4">{office.name}</h3>
+                  <div className="space-y-4 mb-6">
                     <div className="flex items-start">
-                      <MapPin className="mr-4 h-6 w-6 text-red-600" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Head Office</h3>
-                        <p className="text-gray-600">
-                          42 Tourism Avenue
-                          <br />
-                          Kochi, Kerala, India 682016
-                        </p>
-                      </div>
+                      <MapPin className="mr-3 h-5 w-5 text-red-600 mt-1" />
+                      <p className="text-gray-600">{office.address}</p>
                     </div>
-
-                    <div className="flex items-start">
-                      <Phone className="mr-4 h-6 w-6 text-red-600" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Phone</h3>
-                        <p className="text-gray-600">+91 (484) 123-4567</p>
-                      </div>
+                    <div className="flex items-center">
+                      <Phone className="mr-3 h-5 w-5 text-red-600" />
+                      <p className="text-gray-600">{office.phone}</p>
                     </div>
-
-                    <div className="flex items-start">
-                      <Mail className="mr-4 h-6 w-6 text-red-600" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Email</h3>
-                        <p className="text-gray-600">info@maptheworld.com</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <Clock className="mr-4 h-6 w-6 text-red-600" />
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Office Hours</h3>
-                        <p className="text-gray-600">
-                          Monday - Friday: 9:00 AM - 6:00 PM
-                          <br />
-                          Saturday: 10:00 AM - 4:00 PM
-                          <br />
-                          Sunday: Closed
-                        </p>
-                      </div>
+                    <div className="flex items-center">
+                      <Mail className="mr-3 h-5 w-5 text-red-600" />
+                      <p className="text-gray-600">{office.email}</p>
                     </div>
                   </div>
-
-                  <div className="mt-8 h-80 w-full overflow-hidden rounded-2xl border border-gray-100">
+                  <div className="h-48 w-full overflow-hidden rounded-xl border border-gray-100">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.3059353029!2d-74.25986548248684!3d40.69714941774136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1619826381244!5m2!1sen!2s"
+                      src={office.mapUrl}
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="Office Location"
-                    ></iframe>
+                      title={`${office.name} Office Location`}
+                    />
                   </div>
                 </div>
               </div>
-            </TabsContent>
-
-            <TabsContent value="offices">
-              <div className="grid gap-12 lg:grid-cols-3">
-                <div className="lg:col-span-1">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-6">
-                    <Globe className="h-4 w-4" />
-                    Global Presence
-                  </div>
-                  <h2 className="text-3xl font-bold mb-8 text-gray-900">Our Global Offices</h2>
-                  <div className="space-y-4">
-                    {offices.map((office) => (
-                      <button
-                        key={office.id}
-                        className={`w-full text-left p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 ${
-                          selectedOffice.id === office.id
-                            ? "bg-gradient-to-r from-red-600 to-orange-600 text-white"
-                            : "bg-gradient-to-br from-white to-gray-50 border border-gray-100 hover:border-red-200"
-                        }`}
-                        onClick={() => setSelectedOffice(office)}
-                      >
-                        <h3 className="text-xl font-bold">{office.name}</h3>
-                        <p
-                          className={
-                            selectedOffice.id === office.id ? "text-white/90" : "text-gray-600"
-                          }
-                        >
-                          {office.address}
-                        </p>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="lg:col-span-2">
-                  <div className="rounded-2xl border border-gray-100 p-8 bg-gradient-to-br from-white to-gray-50">
-                    <h3 className="text-3xl font-bold mb-6 text-gray-900">{selectedOffice.name} Office</h3>
-
-                    <div className="grid gap-8 md:grid-cols-2">
-                      <div className="space-y-6">
-                        <div className="flex items-start">
-                          <MapPin className="mr-4 h-5 w-5 text-red-600" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900">Address</h4>
-                            <p className="text-gray-600">{selectedOffice.address}</p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start">
-                          <Phone className="mr-4 h-5 w-5 text-red-600" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900">Phone</h4>
-                            <p className="text-gray-600">{selectedOffice.phone}</p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start">
-                          <Mail className="mr-4 h-5 w-5 text-red-600" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900">Email</h4>
-                            <p className="text-gray-600">{selectedOffice.email}</p>
-                          </div>
-                        </div>
-
-                        <div className="flex items-start">
-                          <Clock className="mr-4 h-5 w-5 text-red-600" />
-                          <div>
-                            <h4 className="font-semibold text-gray-900">Office Hours</h4>
-                            <p className="text-gray-600 whitespace-pre-line">{selectedOffice.hours}</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="h-64 md:h-full w-full overflow-hidden rounded-2xl border border-gray-100">
-                        <iframe
-                          src={selectedOffice.mapUrl}
-                          width="100%"
-                          height="100%"
-                          style={{ border: 0 }}
-                          allowFullScreen
-                          loading="lazy"
-                          referrerPolicy="no-referrer-when-downgrade"
-                          title={`${selectedOffice.name} Office Location`}
-                        ></iframe>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-orange-50 via-white to-red-50">
+      {/* Testimonials */}
+      <section className="py-24 bg-gradient-to-br from-red-50 via-white to-orange-50">
         <div className="container">
-          <div className="mx-auto max-w-3xl text-center mb-12">
+          <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
               <Heart className="h-4 w-4" />
-              FAQ
+              Testimonials
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked <span className="text-red-600">Questions</span>
-            </h2>
-            <p className="text-lg text-gray-600">
-              Find answers to common questions about our services and travel packages
+            <h2 className="text-4xl font-bold mb-4">What Our Travelers Say</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Real stories from real travelers who've experienced the Map The World difference
             </p>
           </div>
 
-          <div className="mx-auto max-w-3xl space-y-6">
-            <div className="rounded-2xl bg-white p-8 border border-gray-100 hover:border-red-200 transition-all duration-300">
+          <div className="max-w-4xl mx-auto">
+            <TestimonialSlider />
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-6">
+              <Compass className="h-4 w-4" />
+              Common Questions
+            </div>
+            <h2 className="text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Everything you need to know about our services and travel packages
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="rounded-2xl bg-gradient-to-br from-white to-gray-50 p-8 border border-gray-100 hover:border-red-200 transition-all duration-300">
               <h3 className="text-xl font-bold text-gray-900">How do I book a travel package?</h3>
-              <p className="mt-3 text-gray-600 leading-relaxed">
-                You can book a travel package by contacting our team through the form on this page, calling our office
-                directly, or using the "Book Now" button on any package page on our website.
+              <p className="mt-3 text-gray-600">
+                You can book a travel package through our website, by contacting our team via the form above, or by calling any of our offices directly.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-white p-8 border border-gray-100 hover:border-red-200 transition-all duration-300">
+            <div className="rounded-2xl bg-gradient-to-br from-white to-gray-50 p-8 border border-gray-100 hover:border-red-200 transition-all duration-300">
               <h3 className="text-xl font-bold text-gray-900">What payment methods do you accept?</h3>
-              <p className="mt-3 text-gray-600 leading-relaxed">
-                We accept all major credit cards, bank transfers, and PayPal. For certain destinations, we also offer
-                payment plans to help you budget for your trip.
+              <p className="mt-3 text-gray-600">
+                We accept all major credit cards, bank transfers, and digital payments. Flexible payment plans are available for select packages.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-white p-8 border border-gray-100 hover:border-red-200 transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900">Can I customize a travel package?</h3>
-              <p className="mt-3 text-gray-600 leading-relaxed">
-                We specialize in creating customized travel experiences. Contact our team with your preferences, and
-                we'll work with you to design the perfect itinerary.
-              </p>
-            </div>
-
-            <div className="rounded-2xl bg-white p-8 border border-gray-100 hover:border-red-200 transition-all duration-300">
-              <h3 className="text-xl font-bold text-gray-900">What is your cancellation policy?</h3>
-              <p className="mt-3 text-gray-600 leading-relaxed">
-                Our cancellation policy varies depending on the package and destination. Generally, cancellations made
-                60+ days before departure receive a full refund minus a small administrative fee. Please refer to the
-                specific terms for each package or ask our team for details.
+            <div className="rounded-2xl bg-gradient-to-br from-white to-gray-50 p-8 border border-gray-100 hover:border-red-200 transition-all duration-300">
+              <h3 className="text-xl font-bold text-gray-900">Can I customize my travel package?</h3>
+              <p className="mt-3 text-gray-600">
+                Absolutely! We specialize in creating personalized travel experiences. Contact our team to design your perfect itinerary.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600">
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-r from-red-600 to-orange-600">
         <div className="container">
-          <div className="mx-auto max-w-4xl text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Start Your <span className="text-red-200">Adventure</span>?
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <h2 className="text-4xl font-bold mb-6">
+              Ready to Start Your Adventure?
             </h2>
-            <p className="text-xl mb-8 text-red-100 max-w-2xl mx-auto">
-              Join thousands of travelers who have discovered the world through our carefully crafted experiences.
-              Your next great adventure is just a click away.
+            <p className="text-xl mb-8 text-white/90">
+              Join thousands of travelers who have discovered the world with us. Your next unforgettable journey awaits.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/packages">
-                <Button size="lg" className="bg-white text-red-600 hover:bg-red-50 font-semibold px-8 py-6 text-lg">
-                  Explore Packages
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 font-semibold px-8 py-6 text-lg">
-                  Contact Us
-                </Button>
-              </Link>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button size="lg" className="bg-white text-red-600 hover:bg-red-50">
+                Browse Packages
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                Contact Us
+              </Button>
             </div>
           </div>
         </div>

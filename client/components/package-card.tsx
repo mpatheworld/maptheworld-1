@@ -53,17 +53,17 @@ export default function PackageCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </div>
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-gray-900 line-clamp-1">{name}</h3>
-        <div className="mt-2 flex items-center text-sm text-gray-600">
-          <Clock className="mr-1 h-4 w-4" />
+        <h3 className="text-lg sm:text-lg font-bold text-gray-900 line-clamp-1">{name}</h3>
+        <div className="mt-2 flex items-center text-xs sm:text-sm text-gray-600">
+          <Clock className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
           <span className="line-clamp-1">{duration}</span>
         </div>
-        <p className="mt-2 text-gray-600 leading-relaxed line-clamp-2 flex-grow">{description}</p>
+        <p className="mt-2 text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2 flex-grow">{description}</p>
         <div className="mt-4 flex items-center justify-between">
-          <span className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">₹{price.toLocaleString('en-IN')}</span>
+          <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">₹{price.toLocaleString('en-IN')}</span>
           {!onClick && (
             <Link href={`/packages/${id}`}>
-              <Button size="sm" className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white">View Details</Button>
+              <Button size="sm" className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white text-xs sm:text-sm">View Details</Button>
             </Link>
           )}
         </div>
@@ -71,12 +71,12 @@ export default function PackageCard({
           <Link
             href="tel:7907302538"
             onClick={handleRequestCallback}
-            className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full group-hover:scale-110 transition-transform"
+            className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full group-hover:scale-110 transition-transform"
           >
-            <Phone className="h-5 w-5 text-white" />
+            <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
           </Link>
           <Button 
-            className="flex-1 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-medium"
+            className="flex-1 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-medium text-xs sm:text-sm"
             onClick={handleRequestCallback}
           >
             Request Callback

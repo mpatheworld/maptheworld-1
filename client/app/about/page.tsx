@@ -9,12 +9,12 @@ export default function AboutPage() {
     {
       name: "B.N NITHYANAND",
       position: "CEO & Founder",
-      image: "/nithyanand.jpg",
+      image: "/nithyanand.jpg", 
       bio: "A passionate explorer and visionary leader who believes that travel is the greatest teacher. With over 15 years of experience in the travel industry, he founded MapTheWorld to make authentic travel experiences accessible to everyone.",
     },
     {
       name: "HIMANK GUPTA",
-      position: "CEO & Founder", 
+      position: "CEO & Founder",
       image: "/himankgupta.jpg",
       bio: "An adventure enthusiast and tech innovator who combines his love for exploration with cutting-edge technology. His mission is to create seamless travel experiences that connect people with the world's hidden gems.",
     },
@@ -35,7 +35,7 @@ export default function AboutPage() {
     },
     {
       icon: Globe,
-      title: "Sustainable Travel",
+      title: "Sustainable Travel", 
       description: "Our commitment to responsible tourism ensures that every journey positively impacts the destinations we visit."
     },
     {
@@ -56,14 +56,14 @@ export default function AboutPage() {
       <section className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-br from-red-50 via-white to-orange-50">
         <div className="container">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
-              <MapPin className="h-4 w-4" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-xs font-medium mb-6">
+              <MapPin className="h-3 w-3" />
               Discover Our Story
             </div>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
               Your Journey Starts Here
             </h1>
-            <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
               Born from a passion for exploration and a desire to share the world's wonders, MapTheWorld is your gateway to extraordinary adventures.
             </p>
           </div>
@@ -76,11 +76,11 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center group">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-orange-500 rounded-full mb-4 group-hover:scale-110 transition-transform">
-                  <stat.icon className="h-8 w-8 text-white" />
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-red-500 to-orange-500 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                  <stat.icon className="h-7 w-7 text-white" />
                 </div>
-                <div className="text-3xl font-bold text-gray-900">{stat.number}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-2xl font-bold text-gray-900">{stat.number}</div>
+                <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -100,31 +100,31 @@ export default function AboutPage() {
               ></iframe>
             </div>
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
-                <Heart className="h-4 w-4" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">
+                <Heart className="h-3 w-3" />
                 Our Beginning
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
                 Where Dreams Meet <span className="text-red-600">Adventure</span>
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base text-gray-600 leading-relaxed">
                 MapTheWorld was born from a simple yet powerful belief: everyone deserves to experience the magic of travel. 
                 Our founders, united by their passion for exploration and discovery, set out to create a platform that makes 
                 authentic travel experiences accessible to all.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base text-gray-600 leading-relaxed">
                 From bustling markets in Marrakech to serene temples in Kyoto, from the Northern Lights in Iceland to 
                 the vibrant coral reefs of the Maldives - we've been there, experienced it, and now we're here to share 
                 these incredible journeys with you.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <div className="flex items-center gap-2 text-red-600">
-                  <Globe className="h-5 w-5" />
-                  <span className="font-medium">Global Reach</span>
+                  <Globe className="h-4 w-4" />
+                  <span className="font-medium text-sm">Global Reach</span>
                 </div>
                 <div className="flex items-center gap-2 text-orange-600">
-                  <Heart className="h-5 w-5" />
-                  <span className="font-medium">Local Heart</span>
+                  <Heart className="h-4 w-4" />
+                  <span className="font-medium text-sm">Local Heart</span>
                 </div>
               </div>
             </div>
@@ -136,14 +136,14 @@ export default function AboutPage() {
       <section className="py-20 bg-white">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
-              <Compass className="h-4 w-4" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-xs font-medium mb-6">
+              <Compass className="h-3 w-3" />
               Our Values
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               What Drives Our <span className="text-red-600">Passion</span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base text-gray-600">
               These core values guide every journey we create and every experience we deliver
             </p>
           </div>
@@ -154,11 +154,11 @@ export default function AboutPage() {
                 key={index}
                 className="group p-8 rounded-2xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 hover:border-red-200 transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br from-red-500 to-orange-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
-                  <value.icon className="h-7 w-7 text-white" />
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
+                  <value.icon className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{value.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
@@ -169,14 +169,14 @@ export default function AboutPage() {
       <section className="py-20 bg-gradient-to-br from-orange-50 via-white to-red-50">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-medium mb-6">
-              <Users className="h-4 w-4" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-xs font-medium mb-6">
+              <Users className="h-3 w-3" />
               Meet Our Founders
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               The <span className="text-red-600">Visionaries</span> Behind Your Adventures
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base text-gray-600">
               Passionate travelers who turned their love for exploration into your next great adventure
             </p>
           </div>
@@ -197,9 +197,9 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-1">{founder.name}</h3>
-                  <p className="text-red-600 font-semibold mb-4">{founder.position}</p>
-                  <p className="text-gray-600 leading-relaxed">{founder.bio}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1">{founder.name}</h3>
+                  <p className="text-red-600 font-semibold text-sm mb-4">{founder.position}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{founder.bio}</p>
                 </div>
               </div>
             ))}
@@ -211,14 +211,14 @@ export default function AboutPage() {
       <section className="py-20 bg-white">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium mb-6">
-              <MapPin className="h-4 w-4" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-xs font-medium mb-6">
+              <MapPin className="h-3 w-3" />
               Our Journey
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               Milestones of Our <span className="text-red-600">Adventure</span>
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base text-gray-600">
               From a simple idea to a global travel platform - here's how we've grown
             </p>
           </div>
@@ -233,7 +233,7 @@ export default function AboutPage() {
               },
               {
                 year: "2022",
-                title: "First Adventures", 
+                title: "First Adventures",
                 description: "Launched our first curated travel packages to popular destinations across India and Southeast Asia.",
                 side: "right"
               },
@@ -260,29 +260,29 @@ export default function AboutPage() {
                 {milestone.side === "left" ? (
                   <>
                     <div className="text-right pr-8">
-                      <div className="inline-block px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-bold mb-3">
+                      <div className="inline-block px-4 py-2 bg-red-100 text-red-800 rounded-full text-xs font-bold mb-3">
                         {milestone.year}
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{milestone.title}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">{milestone.description}</p>
                     </div>
-                    <div className="h-6 w-6 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center z-10">
-                      <div className="h-3 w-3 rounded-full bg-white"></div>
+                    <div className="h-5 w-5 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center z-10">
+                      <div className="h-2.5 w-2.5 rounded-full bg-white"></div>
                     </div>
                     <div></div>
                   </>
                 ) : (
                   <>
                     <div></div>
-                    <div className="h-6 w-6 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center z-10">
-                      <div className="h-3 w-3 rounded-full bg-white"></div>
+                    <div className="h-5 w-5 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center z-10">
+                      <div className="h-2.5 w-2.5 rounded-full bg-white"></div>
                     </div>
                     <div className="pl-8">
-                      <div className="inline-block px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-bold mb-3">
+                      <div className="inline-block px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-xs font-bold mb-3">
                         {milestone.year}
                       </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{milestone.description}</p>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2">{milestone.title}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">{milestone.description}</p>
                     </div>
                   </>
                 )}
@@ -296,21 +296,21 @@ export default function AboutPage() {
       <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600">
         <div className="container">
           <div className="mx-auto max-w-4xl text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
               Ready to Start Your <span className="text-red-200">Adventure</span>?
             </h2>
-            <p className="text-xl mb-8 text-red-100 max-w-2xl mx-auto">
+            <p className="text-lg mb-8 text-red-100 max-w-2xl mx-auto">
               Join thousands of travelers who have discovered the world through our carefully crafted experiences. 
               Your next great adventure is just a click away.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/packages">
-                <Button size="lg" className="bg-white text-red-600 hover:bg-red-50 font-semibold px-8 py-6 text-lg">
+                <Button size="lg" className="bg-white text-red-600 hover:bg-red-50 font-semibold px-6 py-5 text-base">
                   Explore Packages
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 font-semibold px-8 py-6 text-lg">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 font-semibold px-6 py-5 text-base">
                   Contact Us
                 </Button>
               </Link>

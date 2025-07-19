@@ -15,38 +15,21 @@ import React from 'react'
 // Add offers data
 const offers = [
   {
-    title: "Early Bird Summer Special",
-    description: "Book your summer vacation now and get amazing discounts on selected packages",
-    discount: "15%",
-    ctaText: "Book Now",
+    title: "Manali Tour Package",
+    description: "Experience the beauty of Manali with our special tour package starting from just ₹4499",
+    discount: "₹4499",
+    ctaText: "Book Now", 
     ctaLink: "/packages",
     variant: "red" as const
   },
   {
-    title: "Last Minute Deals",
-    description: "Grab incredible discounts on last-minute bookings for selected destinations",
-    discount: "20%",
-    ctaText: "View Deals",
-    ctaLink: "/packages",
+    title: "Delhi Agra College Tour",
+    description: "Special college excursion package covering Delhi and Agra starting from just ₹4499",
+    discount: "₹4499",
+    ctaText: "Book Now",
+    ctaLink: "/packages", 
     variant: "orange" as const
-  },
-  {
-    title: "Group Travel Offer",
-    description: "Special rates for group bookings of 5 or more people. Perfect for family and friends",
-    discount: "25%",
-    ctaText: "Plan Together",
-    ctaLink: "/contact",
-    variant: "red" as const
-  },
-  {
-    title: "Early Bird Summer Special",
-    description: "Book your summer vacation now and get amazing discounts on selected packages",
-    discount: "15%",
-    ctaText: "Book Now",
-    ctaLink: "/packages",
-    variant: "red" as const
   }
-    
 ]
 
 export default function Home() {

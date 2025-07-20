@@ -181,25 +181,46 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+          <div className="grid gap-16 md:grid-cols-2 max-w-6xl mx-auto">
             {founders.map((founder, index) => (
               <div
                 key={index}
-                className="group overflow-hidden rounded-2xl bg-white border border-gray-100 hover:border-red-200 transition-all duration-300 hover:-translate-y-1"
+                className="group flex flex-col items-center"
               >
-                <div className="relative h-80 w-full overflow-hidden">
-                  <Image
-                    src={founder.image || "/placeholder.svg"}
-                    alt={founder.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="relative w-56 h-56 mb-8">
+                  {/* Decorative circles */}
+                  <div className="absolute -right-4 -top-4 w-24 h-24 rounded-full bg-orange-200 opacity-20" />
+                  <div className="absolute -left-4 -bottom-4 w-32 h-32 rounded-full bg-red-200 opacity-20" />
+                  
+                  {/* Image container */}
+                  <div className="relative h-full w-full rounded-full">
+                    {/* Gradient border */}
+                    <div className="absolute -inset-2 bg-gradient-to-br from-red-500 to-orange-500 rounded-full blur opacity-30 group-hover:opacity-40 transition-opacity" />
+                    
+                    {/* Image */}
+                    <div className="relative h-full w-full overflow-hidden rounded-full border-[6px] border-white shadow-2xl">
+                      <Image
+                        src={founder.image || "/placeholder.svg"}
+                        alt={founder.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{founder.name}</h3>
-                  <p className="text-red-600 font-semibold text-sm mb-4">{founder.position}</p>
-                  <p className="text-sm text-gray-600 leading-relaxed">{founder.bio}</p>
+
+                <div className="relative text-center max-w-md">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent mb-3">
+                    {founder.name}
+                  </h3>
+                  <div className="inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-red-500/10 to-orange-500/10 rounded-full mb-6">
+                    <span className="text-sm font-semibold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+                      {founder.position}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed">
+                    {founder.bio}
+                  </p>
                 </div>
               </div>
             ))}

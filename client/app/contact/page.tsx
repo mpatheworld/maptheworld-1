@@ -13,31 +13,13 @@ export default function ContactPage() {
 
   const offices = [
     {
-      id: "kochi",
-      name: "Kochi",
-      address: "42 Tourism Avenue, Kochi, Kerala, India 682016",
-      phone: "+91 (484) 123-4567",
-      email: "kochi@maptheworld.com", 
+      id: "nileshwar",
+      name: "Nileshwar",
+      address: "Near Temple Road, Swarg Building, Nileshwar, Kerala, India",
+      phone: "+91 79073 02538",
+      email: "info@maptheworld.com",
       hours: "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15721.000000000002!2d76.2678!3d9.9312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d514abec6bf%3A0xbd582caa5844192!2sKochi%2C%20Kerala!5e0!3m2!1sen!2sin!4v1619826381244!5m2!1sen!2sin",
-    },
-    {
-      id: "kannur",
-      name: "Kannur", 
-      address: "15 Beach Road, Kannur, Kerala, India 670001",
-      phone: "+91 (497) 234-5678",
-      email: "kannur@maptheworld.com",
-      hours: "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12538.000000000002!2d75.3704!3d11.8745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba422b9b2aca753%3A0x380605a11ce24f6c!2sKannur%2C%20Kerala!5e0!3m2!1sen!2sin!4v1619826462320!5m2!1sen!2sin",
-    },
-    {
-      id: "trivandrum",
-      name: "Trivandrum",
-      address: "28 Temple Street, Trivandrum, Kerala, India 695001", 
-      phone: "+91 (471) 345-6789",
-      email: "trivandrum@maptheworld.com",
-      hours: "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed",
-      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15765.000000000002!2d76.9366!3d8.5241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bbb805bbcd47%3A0x15439fab5c5c81cb!2sThiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1619826520279!5m2!1sen!2sin",
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15721.000000000002!2d75.1678!3d12.2312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba48c2a0d9e7c6d%3A0x4c2b30e5b5c7e1a0!2sNileshwar%2C%20Kerala!5e0!3m2!1sen!2sin!4v1619826381244!5m2!1sen!2sin",
     }
   ]
 
@@ -98,44 +80,39 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {offices.map((office) => (
-              <div
-                key={office.id}
-                className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 p-8 hover:border-red-200 transition-all duration-300"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <h3 className="text-2xl font-bold mb-4">{office.name}</h3>
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start">
-                      <MapPin className="mr-3 h-5 w-5 text-red-600 mt-1" />
-                      <p className="text-gray-600">{office.address}</p>
-                    </div>
-                    <div className="flex items-center">
-                      <Phone className="mr-3 h-5 w-5 text-red-600" />
-                      <p className="text-gray-600">{office.phone}</p>
-                    </div>
-                    <div className="flex items-center">
-                      <Mail className="mr-3 h-5 w-5 text-red-600" />
-                      <p className="text-gray-600">{office.email}</p>
-                    </div>
+          <div className="grid lg:grid-cols-1 gap-8">
+            <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white to-gray-50 border border-gray-100 p-8 hover:border-red-200 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-orange-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <h3 className="text-2xl font-bold mb-4">Nileshwar Office</h3>
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-start">
+                    <MapPin className="mr-3 h-5 w-5 text-red-600 mt-1" />
+                    <p className="text-gray-600">NEAR TEMPLE ROAD SWARG BUILDING NILESHWAR</p>
                   </div>
-                  <div className="h-48 w-full overflow-hidden rounded-xl border border-gray-100">
-                    <iframe
-                      src={office.mapUrl}
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      title={`${office.name} Office Location`}
-                    />
+                  <div className="flex items-center">
+                    <Phone className="mr-3 h-5 w-5 text-red-600" />
+                    <p className="text-gray-600">+91 79073 02538</p>
+                  </div>
+                  <div className="flex items-center">
+                    <Mail className="mr-3 h-5 w-5 text-red-600" />
+                    <p className="text-gray-600">info@maptheworld.com</p>
                   </div>
                 </div>
+                <div className="h-48 w-full overflow-hidden rounded-xl border border-gray-100">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15657.626753071632!2d75.10940716977537!3d12.258843800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba460d551e8d6fb%3A0x3df5363c8ade3c1b!2sNileshwar%2C%20Kerala!5e0!3m2!1sen!2sin!4v1699472065360!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Nileshwar Office Location"
+                  />
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>

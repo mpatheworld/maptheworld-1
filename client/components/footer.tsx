@@ -25,18 +25,15 @@ export default function Footer() {
             </div>
             <div className="flex flex-col items-center md:items-end">
               <div className="flex space-x-6 mb-4">
-                <Link href="#" className="text-red-500 hover:text-red-600 transition-colors">
+                <Link href="https://www.facebook.com/profile.php?id=61565144255876" target="_blank" rel="noopener noreferrer" className="text-red-500 hover:text-red-600 transition-colors">
                   <Facebook size={24} />
                   <span className="sr-only">Facebook</span>
                 </Link>
-                <Link href="#" className="text-red-500 hover:text-red-600 transition-colors">
+                <Link href="https://www.instagram.com/maptheworld.in?igsh=MWI3bTZ3OHB1ZXQ5OQ==" target="_blank" rel="noopener noreferrer" className="text-red-500 hover:text-red-600 transition-colors">
                   <Instagram size={24} />
                   <span className="sr-only">Instagram</span>
                 </Link>
-                <Link href="#" className="text-red-500 hover:text-red-600 transition-colors">
-                  <Twitter size={24} />
-                  <span className="sr-only">Twitter</span>
-                </Link>
+   
               </div>
               <div className="flex items-center text-red-600">
                 <Globe className="mr-2" size={20} />
@@ -52,25 +49,25 @@ export default function Footer() {
               <h3 className="text-lg font-serif font-bold text-gray-900 mb-6">About the Maptheworld</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/about" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
+                  <Link href="/about" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
+                  <Link href="/terms" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
                     Terms and Conditions
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
+                  <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
+                  <Link href="/contact" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
                     Contact
                   </Link>
@@ -83,25 +80,25 @@ export default function Footer() {
               <h3 className="text-lg font-serif font-bold text-gray-900 mb-6">Popular Destinations</h3>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/packages" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
+                  <Link href="/packages" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
                     Kerala Backwaters
                   </Link>
                 </li>
                 <li>
-                  <Link href="/packages" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
+                  <Link href="/packages" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
                     Taj Mahal, Agra
                   </Link>
                 </li>
                 <li>
-                  <Link href="/packages" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
+                  <Link href="/packages" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
                     Jaipur, Rajasthan
                   </Link>
                 </li>
                 <li>
-                  <Link href="/packages" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
+                  <Link href="/packages" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-red-600 transition-colors flex items-center">
                     <span className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2"></span>
                     Goa Beaches
                   </Link>
@@ -115,7 +112,7 @@ export default function Footer() {
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <MapPin className="mr-3 h-5 w-5 text-red-500 flex-shrink-0 mt-1" />
-                  <span className="text-gray-600">42 Tourism Avenue, Kochi, Kerala, India 682016</span>
+                  <span className="text-gray-600">NEAR TEMPLE ROAD SWARG BUILDING NILESHWAR</span>
                 </li>
                 <li className="flex items-center">
                   <Phone className="mr-3 h-5 w-5 text-red-500" />

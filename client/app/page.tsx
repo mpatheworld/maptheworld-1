@@ -8,7 +8,7 @@ import { BannerCarousel } from "@/components/banner-carouesel";
 import { PackageSection } from "@/components/package-section";
 import api from "@/lib/api";
 import { Section } from "@/lib/interface";
-import { MapPin, Heart } from "lucide-react";
+import { MapPin, Heart, MessageCircle } from "lucide-react";
 import { OfferBanner } from "@/components/offer-banner"
 import React from 'react'
 
@@ -110,6 +110,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* WhatsApp Button */}
+      <a 
+        href="https://wa.me/917907302538"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 z-50 flex items-center gap-2"
+      >
+        <MessageCircle className="h-6 w-6" />
+        <span className="hidden md:inline">Chat on WhatsApp</span>
+      </a>
     </>
   );
 }

@@ -17,7 +17,7 @@ export default function ContactPage() {
       name: "Nileshwar",
       address: "Near Temple Road, Swarg Building, Nileshwar, Kerala, India",
       phone: "+91 79073 02538",
-      email: "info@maptheworld.com",
+      email: "info@maptheworld.in",
       hours: "Monday - Friday: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM\nSunday: Closed",
       mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15721.000000000002!2d75.1678!3d12.2312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba48c2a0d9e7c6d%3A0x4c2b30e5b5c7e1a0!2sNileshwar%2C%20Kerala!5e0!3m2!1sen!2sin!4v1619826381244!5m2!1sen!2sin",
     }
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   </div>
                   <div className="flex items-center">
                     <Mail className="mr-3 h-5 w-5 text-red-600" />
-                    <p className="text-gray-600">info@maptheworld.com</p>
+                    <p className="text-gray-600">info@maptheworld.in</p>
                   </div>
                 </div>
                 <div className="h-48 w-full overflow-hidden rounded-xl border border-gray-100">

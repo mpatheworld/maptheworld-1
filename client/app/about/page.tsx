@@ -18,7 +18,7 @@ export default function AboutPage() {
       image: "/nithyanand.jpg", 
     },
     {
-      name: "Aswin Sreedhar",
+      name: "ASWIN SREEDHAR",
       position: "Head of Marketing",
       image: "/aswin.jpeg",
       bio: "A creative marketing strategist with a flair for storytelling and connecting with audiences. As Head of Marketing, he crafts compelling campaigns that inspire travelers to embark on unforgettable journeys with MapTheWorld.",

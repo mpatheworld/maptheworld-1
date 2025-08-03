@@ -438,11 +438,11 @@ export default function PackagePage({ params }: PackagePageProps) {
                   <div className="space-y-3 sm:space-y-4">
                     <div className="flex items-center">
                       <Phone className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
-                      <span className="text-xs sm:text-sm">+91-9876543210</span>
+                      <span className="text-xs sm:text-sm">+91-7907302538</span>
                     </div>
                     <div className="flex items-center">
                       <Mail className="mr-2 h-3 w-3 sm:h-4 sm:w-4 text-red-600" />
-                      <span className="text-xs sm:text-sm">support@maptheworld.com</span>
+                      <span className="text-xs sm:text-sm">info@maptheworld.in</span>
                     </div>
                   </div>
                 </div>

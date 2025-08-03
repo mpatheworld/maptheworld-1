@@ -6,17 +6,22 @@ import { MapPin, Heart, Globe, Users, Award, Compass } from "lucide-react"
 export default function AboutPage() {
   // Founders data
   const founders = [
-    {
-      name: "B.N NITHYANAND",
-      position: "CEO & Founder",
-      image: "/nithyanand.jpg", 
-      bio: "A passionate explorer and visionary leader who believes that travel is the greatest teacher. With over 15 years of experience in the travel industry, he founded MapTheWorld to make authentic travel experiences accessible to everyone.",
-    },
+   
     {
       name: "HIMANK GUPTA",
       position: "CEO & Founder",
       image: "/himankgupta.jpg",
-      bio: "An adventure enthusiast and tech innovator who combines his love for exploration with cutting-edge technology. His mission is to create seamless travel experiences that connect people with the world's hidden gems.",
+    },
+    {
+      name: "B.N NITHYANAND",
+      position: "CEO & Founder",
+      image: "/nithyanand.jpg", 
+    },
+    {
+      name: "Aswin Sreedhar",
+      position: "Head of Marketing",
+      image: "/aswin.jpeg",
+      bio: "A creative marketing strategist with a flair for storytelling and connecting with audiences. As Head of Marketing, he crafts compelling campaigns that inspire travelers to embark on unforgettable journeys with MapTheWorld.",
     },
   ]
 
@@ -181,34 +186,31 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid gap-16 md:grid-cols-2 max-w-6xl mx-auto">
-            {founders.map((founder, index) => (
+          <div className="grid gap-16 md:grid-cols-3 max-w-6xl mx-auto">
+            {founders.slice(0, 3).map((founder, index) => (
               <div
                 key={index}
                 className="group flex flex-col items-center"
               >
                 <div className="relative w-56 h-56 mb-8">
-                  {/* Decorative circles */}
-                  <div className="absolute -right-4 -top-4 w-24 h-24 rounded-full bg-orange-200 opacity-20" />
-                  <div className="absolute -left-4 -bottom-4 w-32 h-32 rounded-full bg-red-200 opacity-20" />
-                  
-                  {/* Image container */}
-                  <div className="relative h-full w-full rounded-full">
-                    {/* Gradient border */}
-                    <div className="absolute -inset-2 bg-gradient-to-br from-red-500 to-orange-500 rounded-full blur opacity-30 group-hover:opacity-40 transition-opacity" />
-                    
-                    {/* Image */}
-                    <div className="relative h-full w-full overflow-hidden rounded-full border-[6px] border-white shadow-2xl">
+                  {/* Revamped photo frame: triple border, subtle shadow, and floating effect */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-100 via-white to-red-100 blur-lg opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all" />
+                  <div className="absolute -right-6 -top-6 w-20 h-20 rounded-full bg-orange-300 opacity-20" />
+                  <div className="absolute -left-6 -bottom-6 w-24 h-24 rounded-full bg-red-300 opacity-20" />
+                  <div className="relative h-full w-full rounded-full shadow-2xl border-4 border-white z-10">
+                    <div className="absolute inset-0 rounded-full border-4 border-orange-200 z-0" />
+                    <div className="absolute inset-2 rounded-full border-2 border-red-200 z-0" />
+                    <div className="relative h-full w-full overflow-hidden rounded-full z-10">
                       <Image
                         src={founder.image || "/placeholder.svg"}
                         alt={founder.name}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110 group-hover:shadow-xl"
+                        style={{ boxShadow: "0 8px 32px 0 rgba(255, 100, 100, 0.15)" }}
                       />
                     </div>
                   </div>
                 </div>
-
                 <div className="relative text-center max-w-md">
                   <h3 className="text-2xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent mb-3">
                     {founder.name}
@@ -218,9 +220,6 @@ export default function AboutPage() {
                       {founder.position}
                     </span>
                   </div>
-                  <p className="text-gray-600 leading-relaxed">
-                    {founder.bio}
-                  </p>
                 </div>
               </div>
             ))}
